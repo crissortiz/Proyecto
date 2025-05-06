@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Modelo ER" id="19CBC38F-A56B-54FD-4E7A-A4C8C70FEB6B" version="3.5">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-03-16 01:31:29 UTC</createdTime>
+<ownerDesignName>Modelo</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>19CBC38F-A56B-54FD-4E7A-A4C8C70FEB6B</designId>
+</OSDM_Design>

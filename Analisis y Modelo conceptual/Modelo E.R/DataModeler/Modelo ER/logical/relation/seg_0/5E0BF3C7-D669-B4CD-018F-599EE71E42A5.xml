@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Requiere" directorySegmentName="seg_0" id="5E0BF3C7-D669-B4CD-018F-599EE71E42A5">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-06 19:20:52 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<engineerTo>
+<item key="B7ADF03B-6EE0-F8B6-ED9B-5F544F2AA87B" value="true"/>
+</engineerTo>
+<sourcePk>7C435906-CC5A-7477-91B4-B5E0F7C9351A</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>6F43D22E-86BC-5F40-4EFE-A028255E736B</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>267018FA-92D4-91CE-75ED-1CF7814D7261</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

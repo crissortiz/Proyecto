@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B3258E0B-6B32-1D2F-EB5B-553FF13362D3" name="Contrata">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IPS_nit" id="C62E3EC2-3DD3-74A4-1950-F0171FC196DA">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9BBC741C-3555-D09C-F1CF-37E95D7F217F" referredColumn="F2D2B022-419B-DA28-B365-2ECE4D6DDA6B"/>
+</associations>
+</Column>
+<Column name="Medico_registroMedico" id="D9E09048-46EE-0751-8B3A-46B03431C485">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200 CHAR</dataTypeSize>
+<ownDataTypeParameters>200 CHAR,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="460DB719-EA2D-6191-F117-8C9D094932A8" referredColumn="A73CC1A8-1C21-AF4B-F172-83E9727F7214"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FDB48134-F27B-6C8C-23DF-E502DB2EE0FE" name="Contrata_PK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C62E3EC2-3DD3-74A4-1950-F0171FC196DA"/>
+<colUsage columnID="D9E09048-46EE-0751-8B3A-46B03431C485"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="59DD05E0-F522-19E6-4DAA-A310F3526850" name="Contrata_IPS_FK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>74B9BCF0-1FBC-3661-2D6B-B06E4C6618FA</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C62E3EC2-3DD3-74A4-1950-F0171FC196DA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3F0A356A-4CC5-0809-EE97-54150D6A4B6E" name="Contrata_Medico_FK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>74B9BCF0-1FBC-3661-2D6B-B06E4C6618FA</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D9E09048-46EE-0751-8B3A-46B03431C485"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

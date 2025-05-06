@@ -1,0 +1,122 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="267018FA-92D4-91CE-75ED-1CF7814D7261" name="Cita">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-03-16 01:40:32 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<engineerTo>
+<item key="B7ADF03B-6EE0-F8B6-ED9B-5F544F2AA87B" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="idCita" id="7712B8D8-AC99-ED64-1E7F-2A13D49E360E">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-03-16 01:40:39 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<engineerTo>
+<item key="B7ADF03B-6EE0-F8B6-ED9B-5F544F2AA87B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha" id="E010373E-21BB-B096-FB59-A24D9DDDBF32">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-03-16 01:40:56 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<engineerTo>
+<item key="B7ADF03B-6EE0-F8B6-ED9B-5F544F2AA87B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="estadoCita" id="2007CB82-9B39-FD1B-AFDD-3DCA9137089A">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-03-16 01:41:18 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<engineerTo>
+<item key="B7ADF03B-6EE0-F8B6-ED9B-5F544F2AA87B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<listOfValues>
+<valueDef value="Completa" description=""/>
+<valueDef value="Disponible" description=""/>
+<valueDef value="Ocupada" description=""/>
+</listOfValues>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="idOrden" id="CCD9B0C5-A976-33B5-20AC-F55E2C441487">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-06 19:20:52 UTC</createdTime>
+<generatorID>5E0BF3C7-D669-B4CD-018F-599EE71E42A5</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<engineerTo>
+<item key="B7ADF03B-6EE0-F8B6-ED9B-5F544F2AA87B" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>0BA8068C-A539-3947-46A6-6BA2C4D727E9</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="idAfiliado" id="B3A43C7C-4411-F0ED-38A1-E8C3496AE92B">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-06 19:23:25 UTC</createdTime>
+<generatorID>9193189E-0B1F-CFE7-D2C3-69F62836F060</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<engineerTo>
+<item key="B7ADF03B-6EE0-F8B6-ED9B-5F544F2AA87B" value="true"/>
+</engineerTo>
+<referedAttribute>88D881FB-FEF2-1911-BB51-429C8314643E</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="registroMedico" id="DDAA05AC-7DD4-54AC-A29A-3638507EC5BE">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-06 19:23:53 UTC</createdTime>
+<generatorID>923D7330-E804-D097-1C96-9F8F9B39B90D</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<engineerTo>
+<item key="B7ADF03B-6EE0-F8B6-ED9B-5F544F2AA87B" value="true"/>
+</engineerTo>
+<referedAttribute>488B351B-1751-D8C4-32D3-C61A69BA4FCE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="D89D2B3B-C2E0-7775-29E5-3CA17260212F" name="Cita PK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-03-16 01:41:06 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<engineerTo>
+<item key="B7ADF03B-6EE0-F8B6-ED9B-5F544F2AA87B" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>7712B8D8-AC99-ED64-1E7F-2A13D49E360E</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

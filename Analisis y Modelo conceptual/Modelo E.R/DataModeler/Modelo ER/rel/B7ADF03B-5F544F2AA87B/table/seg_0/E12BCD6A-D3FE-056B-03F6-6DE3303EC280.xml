@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E12BCD6A-D3FE-056B-03F6-6DE3303EC280" name="Contratav2">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="EPS_nit" id="3983D602-60D3-E397-CB93-E39ADAE594F5">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5B8DEBAA-5038-BB62-3083-ACC03D2AB9F3" referredColumn="2EE2A6F9-57F1-8303-3D55-9EAB69D2BE47"/>
+</associations>
+</Column>
+<Column name="IPS_nit" id="D0F62C84-C493-65A8-0ADE-BF76CE4479B4">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D4E56E8C-EF05-F0A7-C802-5C83BD8810CD" referredColumn="F2D2B022-419B-DA28-B365-2ECE4D6DDA6B"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C2497A17-E0F7-7664-4DCC-EF2CD55F2ED4" name="Contratav2_PK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3983D602-60D3-E397-CB93-E39ADAE594F5"/>
+<colUsage columnID="D0F62C84-C493-65A8-0ADE-BF76CE4479B4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="27813263-E984-AF00-D13D-78AE5F76057B" name="Contratav2_EPS_FK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>BDF72A94-E9CD-4B08-400A-C5E4805712BB</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3983D602-60D3-E397-CB93-E39ADAE594F5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="215CE290-32B5-9761-0FB1-FC60AD0FA005" name="Contratav2_IPS_FK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>BDF72A94-E9CD-4B08-400A-C5E4805712BB</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D0F62C84-C493-65A8-0ADE-BF76CE4479B4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

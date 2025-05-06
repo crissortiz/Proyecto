@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Prestacion" directorySegmentName="seg_0" id="788EC389-15C3-00DE-9976-0D1B6039D88A">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-06 19:15:26 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<engineerTo>
+<item key="B7ADF03B-6EE0-F8B6-ED9B-5F544F2AA87B" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>A5E824C2-DC30-919C-E1F5-70E845A3E98B</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>E8B4876D-5C5F-7F0F-FC67-46CA127B0F11</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,186 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7161C68B-F096-39F9-50CD-92D9C89A3797" name="Cita">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>267018FA-92D4-91CE-75ED-1CF7814D7261</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="idCita" id="C7CE04D5-00CE-F442-06F5-5D06926D98D7">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>7712B8D8-AC99-ED64-1E7F-2A13D49E360E</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha" id="D852C26C-C7CE-77D0-C3F6-5805DDD3DF6F">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>E010373E-21BB-B096-FB59-A24D9DDDBF32</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="hora" id="C6125D95-7C97-1D50-30C0-BEA6F9C4764E">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>6C58707F-7DB3-B00A-B6F8-A38B0303C946</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="estado" id="EAA4C8C3-4734-4692-3783-0EAAA300FA06">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>2007CB82-9B39-FD1B-AFDD-3DCA9137089A</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<listOfValues>
+<valueDef value="Cancelada" description=""/>
+<valueDef value="Completada" description=""/>
+<valueDef value="Vigente" description=""/>
+</listOfValues>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Afiliado_idAfiliado" id="8C8C5523-C4A4-11B2-F4EE-8946A557EA1C">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>450E0B3C-5AAE-6A7A-9563-63982DEFBAA5</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B66DC7D9-19B1-240C-917C-3A5314FCF7F1" referredColumn="37DAA82A-F067-98DA-F29B-8ADC79FBE2A5"/>
+</associations>
+</Column>
+<Column name="IPS_nit" id="78C1A96D-3131-634A-2FC2-458AF72DEF91">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>D55951AA-889D-51D7-E2C6-0EAAB757A901</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1FA7D6AA-BC85-9C46-39C1-47644738E54F" referredColumn="F2D2B022-419B-DA28-B365-2ECE4D6DDA6B"/>
+</associations>
+</Column>
+<Column name="ServicioSalud_idServicio" id="DB6CFB98-6B37-EE03-E711-EB145F574F36">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>72833FA7-10FC-3F84-3302-98A8D802D52E</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="ED104280-EC34-15D7-59B6-9B7412645DF0" referredColumn="01CEA85F-983D-25D4-AA66-5E587C561B18"/>
+</associations>
+</Column>
+<Column name="Medico_registroMedico" id="6D8752BB-9C0D-64CA-7600-38C3FEE85336">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>78A5C9F9-6986-357B-3F82-2AE6386F9119</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200 CHAR</dataTypeSize>
+<ownDataTypeParameters>200 CHAR,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B783EB76-3452-8177-A869-EFF5E73DECE4" referredColumn="A73CC1A8-1C21-AF4B-F172-83E9727F7214"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3B67FC57-F674-1918-FC00-22C86125224F" name="Cita_PK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>D89D2B3B-C2E0-7775-29E5-3CA17260212F</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C7CE04D5-00CE-F442-06F5-5D06926D98D7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="298548F9-D534-BC85-B478-9C685D6F8940" name="Cita_Afiliado_FK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>C7B9E5F1-27B0-62AA-7622-B553F431A311</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8C8C5523-C4A4-11B2-F4EE-8946A557EA1C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D09759F0-CC54-97F4-DB49-771A9B624752" name="Cita_Medico_FK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>A4D35147-1AA0-6301-C971-0B1066E20F2E</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6D8752BB-9C0D-64CA-7600-38C3FEE85336"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AA277EF3-222F-0AA6-C533-1C59435E9547" name="Cita_ServicioSalud_FK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>6922F2A2-89AB-1B2C-8431-57C7EB9E2C31</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DB6CFB98-6B37-EE03-E711-EB145F574F36"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="71EE639E-438A-F69D-E5D0-5E4A5E5A0430" name="Cita_IPS_FK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>A879C5B3-3C76-7912-215B-53DA4361799F</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="78C1A96D-3131-634A-2FC2-458AF72DEF91"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="162F44CB-09D5-4AB0-999C-87F10920C135" name="Crea">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Cita_idCita" id="8F191DB0-EDAE-A525-0070-0FD1B285294E">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="871F7895-15A2-E54F-DC63-D4CBA15EE589" referredColumn="C7CE04D5-00CE-F442-06F5-5D06926D98D7"/>
+</associations>
+</Column>
+<Column name="OrdenServicio_idOrden" id="7AB02703-20A2-91AF-93E8-F3BD92DE07F0">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="213E3B6F-59A7-D241-DA62-8E92D5BE004A" referredColumn="AB894F0C-5672-54E9-C12C-97D7575E511C"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8B5E1D3B-7780-59E9-0C57-2DDC8820EB0A" name="Crea_PK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8F191DB0-EDAE-A525-0070-0FD1B285294E"/>
+<colUsage columnID="7AB02703-20A2-91AF-93E8-F3BD92DE07F0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="12B3E655-C3BF-B984-0588-138B076F4FAF" name="Crea_Cita_FK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>07E87140-41EA-E450-EB71-C89F0BA5F2D3</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8F191DB0-EDAE-A525-0070-0FD1B285294E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1D02F7BD-3079-6C63-6166-C44426CEDE28" name="Crea_OrdenServicio_FK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<generatorID>07E87140-41EA-E450-EB71-C89F0BA5F2D3</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7AB02703-20A2-91AF-93E8-F3BD92DE07F0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

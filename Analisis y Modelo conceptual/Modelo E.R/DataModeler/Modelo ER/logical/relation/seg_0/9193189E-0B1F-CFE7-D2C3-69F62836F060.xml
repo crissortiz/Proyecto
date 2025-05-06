@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Agenda" directorySegmentName="seg_0" id="9193189E-0B1F-CFE7-D2C3-69F62836F060">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-06 19:23:25 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<engineerTo>
+<item key="B7ADF03B-6EE0-F8B6-ED9B-5F544F2AA87B" value="true"/>
+</engineerTo>
+<sourcePk>89105D0C-EBEE-0607-4AB9-F281BE42BC3E</sourcePk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>49F9C5C2-6D39-8E34-84D3-44F2F6D65525</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>267018FA-92D4-91CE-75ED-1CF7814D7261</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
