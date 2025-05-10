@@ -141,27 +141,97 @@
 <isRelationshipColumn>true</isRelationshipColumn>
 <dependOnForeignKeyID>3A6E0D5E-E681-E236-D6BB-4E8A6B141FC8</dependOnForeignKeyID>
 </Column>
+<Column name="tipoAfiliado" id="8376DE15-E028-94F4-C770-DDBE0486D0AC">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<generatorID>5E6875F0-A843-1B25-49C1-16B1BAE95473</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<listOfValues>
+<valueDef value="Beneficiario" description=""/>
+<valueDef value="Contribuyente" description=""/>
+</listOfValues>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tipoDocumento" id="817A2C48-1A33-938C-A68E-89310B11EBE0">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<generatorID>4F18DF14-87D2-DE31-3EF3-18F32A8DD83F</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="numDocumento" id="32F8E61A-034D-4D37-8C65-590D088E34B0">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<generatorID>3C44E07E-3397-3819-00B4-7BB823D4AF90</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Afiliado_idAfiliado" id="EB93521C-9504-7368-21A1-8DE875171BD6">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<generatorID>D2DBB515-8717-E0B4-A1B1-CAD01D9EC0A6</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5D02A379-C901-629E-A7BE-8F2718ED286B" referredColumn="37DAA82A-F067-98DA-F29B-8ADC79FBE2A5"/>
+</associations>
+</Column>
+<Column name="Parentesco1" id="8BD6CD2D-6604-275E-520E-783EC5B1AAA3">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<generatorID>64289402-76C8-79F9-293C-C7483477C3E2</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isRelationshipColumn>true</isRelationshipColumn>
+<dependOnForeignKeyID>5D02A379-C901-629E-A7BE-8F2718ED286B</dependOnForeignKeyID>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="DED7736F-9D4C-A14B-5C70-361F8B2FEAA1" name="Afiliado_PK">
-<createdBy>ortiz</createdBy>
-<createdTime>2025-04-24 17:05:30 UTC</createdTime>
-<ownerDesignName>Modelo ER</ownerDesignName>
-<pk>true</pk>
-<indexState>Primary Constraint</indexState>
-<indexColumnUsage>
-<colUsage columnID="14DABF85-A4D8-BC95-78CA-430174C050C1"/>
-</indexColumnUsage>
-</ind_PK_UK>
 <ind_PK_UK id="89FF551F-1F2F-183F-86B0-E60F98820E9D" name="Afiliado_idAfiliado_UN">
 <createdBy>ortiz</createdBy>
 <createdTime>2025-04-24 17:05:30 UTC</createdTime>
 <generatorID>89105D0C-EBEE-0607-4AB9-F281BE42BC3E</generatorID>
 <ownerDesignName>Modelo ER</ownerDesignName>
-<indexState>Unique Constraint</indexState>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="37DAA82A-F067-98DA-F29B-8ADC79FBE2A5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DED7736F-9D4C-A14B-5C70-361F8B2FEAA1" name="Afiliado_PK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-04-24 17:05:30 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="14DABF85-A4D8-BC95-78CA-430174C050C1"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="724526A5-E407-449F-0DD8-FD114ED1BA55" name="Afiliado_EPS_FK">
@@ -184,6 +254,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="A755582B-3529-A5A5-BF30-270D189EDD46"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="738F6162-90C5-54CF-7479-1E077266002E" name="Afiliado_Afiliado_FKv2">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<generatorID>FEFC84EE-2A83-9F3A-99B2-05899E0705C4</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EB93521C-9504-7368-21A1-8DE875171BD6"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

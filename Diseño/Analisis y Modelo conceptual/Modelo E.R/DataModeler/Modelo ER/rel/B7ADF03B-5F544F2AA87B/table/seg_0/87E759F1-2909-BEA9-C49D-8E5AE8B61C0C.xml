@@ -44,6 +44,40 @@
 <ownDataTypeParameters>300,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="tipoServicio" id="2D9F8E7F-8AE6-0934-0F40-04601412517A">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<generatorID>90617604-7CAA-38CE-AA89-66AA090007D0</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<listOfValues>
+<valueDef value="ConsultaControl" description=""/>
+<valueDef value="ConsultaEspecialista" description=""/>
+<valueDef value="ConsultaGeneral" description=""/>
+<valueDef value="ConsultaUrgente" description=""/>
+<valueDef value="ExamenDiagnostico" description=""/>
+<valueDef value="Hospitalizacion" description=""/>
+<valueDef value="ProcedimientoEspecializado" description=""/>
+<valueDef value="Terapia" description=""/>
+</listOfValues>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="requiereOrden" id="1082FEBA-8B1F-AED9-5CB0-77B1930C2067">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<generatorID>0E310A15-A789-4AF0-F522-DCB6BC539FD7</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="AF9D8CEA-57C6-3FF9-3B1C-64E3E1555872" name="ServicioSalud_PK">

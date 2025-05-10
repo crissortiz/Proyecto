@@ -99,9 +99,9 @@
 <referedAttribute>488B351B-1751-D8C4-32D3-C61A69BA4FCE</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT011</logicalDatatype>
 <dataTypeSize>100</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="idAfiliado" id="C5B22CC3-B7B0-B6DB-002F-9DD6790D9970">
 <createdBy>ortiz</createdBy>
@@ -116,7 +116,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>20 CHAR</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -124,8 +124,9 @@
 <createdBy>ortiz</createdBy>
 <createdTime>2025-03-16 01:42:42 UTC</createdTime>
 <ownerDesignName>Modelo ER</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="B7ADF03B-6EE0-F8B6-ED9B-5F544F2AA87B" value="true"/>
+<item key="B7ADF03B-6EE0-F8B6-ED9B-5F544F2AA87B" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

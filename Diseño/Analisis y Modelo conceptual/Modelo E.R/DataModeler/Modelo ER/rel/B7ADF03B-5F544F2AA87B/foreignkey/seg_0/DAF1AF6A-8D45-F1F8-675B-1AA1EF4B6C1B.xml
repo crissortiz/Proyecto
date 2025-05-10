@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="DAF1AF6A-8D45-F1F8-675B-1AA1EF4B6C1B" containerWithKeyObject="8446DBAF-1FEF-10B9-4506-E6AF51EC6FF1" localFKIndex="7B4B8856-6519-2F63-77F8-AEDD89D62640" name="Trabajo_IPS_FK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<generatorID>DFE6523A-AC77-B590-A2C7-E3CECBB939F3</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<referredTableLongName>IPS</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>027079F2-CD62-3587-AD67-3D5A9B16CD70</referredTableID>
+<keyObject>20CC4105-20BB-AE1E-70BA-D0A8C39164E2</keyObject>
+<referredKeyID>20CC4105-20BB-AE1E-70BA-D0A8C39164E2</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>nit</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

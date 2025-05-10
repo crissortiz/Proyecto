@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0807E71F-C969-A701-4451-532234534C79" name="Atiende">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Medico_registroMedico1" id="B2AF5D7C-0103-203E-6360-15A4B10D5A19">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E0068DB7-5CF2-6E11-244A-456586BFC3D3" referredColumn="8AAEA2B0-7902-BCBC-134E-E554030322E4"/>
+</associations>
+</Column>
+<Column name="ServicioSalud_idServicio" id="0CA5B6FC-7162-A439-4EBF-AC7F161C1B6E">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="49119177-BD08-7A0F-A80F-BEE762FFE901" referredColumn="01CEA85F-983D-25D4-AA66-5E587C561B18"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D4398644-D66A-3111-C27A-2FD6EFB1DCF2" name="Atiende_PK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B2AF5D7C-0103-203E-6360-15A4B10D5A19"/>
+<colUsage columnID="0CA5B6FC-7162-A439-4EBF-AC7F161C1B6E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8B83ABDF-0027-B0C8-DA86-51706F6ECEAF" name="Atiende_Medico_FK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<generatorID>10A2CA70-5D73-BDCC-3DD7-0324AA30B756</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B2AF5D7C-0103-203E-6360-15A4B10D5A19"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C2A2E538-0541-0A83-9D3D-70FA29AC17BF" name="Atiende_ServicioSalud_FK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<generatorID>10A2CA70-5D73-BDCC-3DD7-0324AA30B756</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0CA5B6FC-7162-A439-4EBF-AC7F161C1B6E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

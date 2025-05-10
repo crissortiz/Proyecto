@@ -72,7 +72,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>20 CHAR</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="idAfiliado" id="B3A43C7C-4411-F0ED-38A1-E8C3496AE92B">
 <createdBy>ortiz</createdBy>
@@ -87,7 +87,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>20 CHAR</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="registroMedico" id="DDAA05AC-7DD4-54AC-A29A-3638507EC5BE">
 <createdBy>ortiz</createdBy>
@@ -100,9 +100,9 @@
 <referedAttribute>488B351B-1751-D8C4-32D3-C61A69BA4FCE</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT011</logicalDatatype>
 <dataTypeSize>100</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -110,8 +110,9 @@
 <createdBy>ortiz</createdBy>
 <createdTime>2025-03-16 01:41:06 UTC</createdTime>
 <ownerDesignName>Modelo ER</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="B7ADF03B-6EE0-F8B6-ED9B-5F544F2AA87B" value="true"/>
+<item key="B7ADF03B-6EE0-F8B6-ED9B-5F544F2AA87B" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

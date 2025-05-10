@@ -42,7 +42,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="estado" id="EAA4C8C3-4734-4692-3783-0EAAA300FA06">
+<Column name="estadoCita" id="EAA4C8C3-4734-4692-3783-0EAAA300FA06">
 <createdBy>ortiz</createdBy>
 <createdTime>2025-04-24 17:05:30 UTC</createdTime>
 <generatorID>2007CB82-9B39-FD1B-AFDD-3DCA9137089A</generatorID>
@@ -52,9 +52,9 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>20 CHAR</dataTypeSize>
 <listOfValues>
-<valueDef value="Cancelada" description=""/>
-<valueDef value="Completada" description=""/>
-<valueDef value="Vigente" description=""/>
+<valueDef value="Completa" description=""/>
+<valueDef value="Disponible" description=""/>
+<valueDef value="Ocupada" description=""/>
 </listOfValues>
 <ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
@@ -124,6 +124,55 @@
 <colAssociation fkAssociation="B783EB76-3452-8177-A869-EFF5E73DECE4" referredColumn="A73CC1A8-1C21-AF4B-F172-83E9727F7214"/>
 </associations>
 </Column>
+<Column name="OrdenServicio_idOrden" id="4C130E48-A12E-CEC3-DAB9-11D8D0A3E2C7">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<generatorID>CCD9B0C5-A976-33B5-20AC-F55E2C441487</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FEB6D08A-2640-76D4-AA1E-060237B72660" referredColumn="AB894F0C-5672-54E9-C12C-97D7575E511C"/>
+</associations>
+</Column>
+<Column name="Afiliado_idAfiliado2" id="D82C40BB-0464-5DD4-EAB1-86995ED2BAA4">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<generatorID>B3A43C7C-4411-F0ED-38A1-E8C3496AE92B</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4E1D59C5-6FEE-BF31-06D5-CDC139EBCC87" referredColumn="37DAA82A-F067-98DA-F29B-8ADC79FBE2A5"/>
+</associations>
+</Column>
+<Column name="Medico_registroMedico1" id="BAA92BE7-AE43-CF93-64EB-135C1E3AF719">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<generatorID>DDAA05AC-7DD4-54AC-A29A-3638507EC5BE</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="59FA7589-F2F8-B2C5-A844-91FEAA4EFF58" referredColumn="8AAEA2B0-7902-BCBC-134E-E554030322E4"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="3B67FC57-F674-1918-FC00-22C86125224F" name="Cita_PK">
@@ -180,6 +229,39 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="78C1A96D-3131-634A-2FC2-458AF72DEF91"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="797104AA-409A-6729-88AE-936BD7345950" name="Cita_Afiliado_FKv2">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<generatorID>9193189E-0B1F-CFE7-D2C3-69F62836F060</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D82C40BB-0464-5DD4-EAB1-86995ED2BAA4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F4D76300-DB24-95F2-33AA-2CC41545CD02" name="Cita_Medico_FKv2">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<generatorID>923D7330-E804-D097-1C96-9F8F9B39B90D</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BAA92BE7-AE43-CF93-64EB-135C1E3AF719"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="30A06A21-6C83-6B12-F715-E471471D2551" name="Cita_OrdenServicio_FK">
+<createdBy>ortiz</createdBy>
+<createdTime>2025-05-10 20:06:33 UTC</createdTime>
+<generatorID>5E0BF3C7-D669-B4CD-018F-599EE71E42A5</generatorID>
+<ownerDesignName>Modelo ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4C130E48-A12E-CEC3-DAB9-11D8D0A3E2C7"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
