@@ -121,6 +121,7 @@ public class Afiliado {
         return medico;
     }
 
+    
     public void setMedico(Medico medico) {
         this.medico = medico;
     }
