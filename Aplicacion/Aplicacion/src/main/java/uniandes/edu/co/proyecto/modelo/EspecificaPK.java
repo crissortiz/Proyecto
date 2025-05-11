@@ -7,7 +7,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Embeddable
-
 public class EspecificaPK implements Serializable {
     
     @ManyToOne
