@@ -10,11 +10,11 @@ import jakarta.persistence.ManyToOne;
 public class AtiendePK implements Serializable{
 
     @ManyToOne
-    @JoinColumn(name = "Medico_registroMedico1", referencedColumnName = "id")
+    @JoinColumn(name = "Medico_registroMedico1", referencedColumnName = "registroMedico")
     private Medico registroMedico;
 
     @ManyToOne
-    @JoinColumn(name = "ServicioSalud_idServicio", referencedColumnName = "id")
+    @JoinColumn(name = "ServicioSalud_idServicio", referencedColumnName = "idServicio")
     private ServicioSalud idServicio;
 
     public AtiendePK(Medico registroMedico, ServicioSalud idServicio) {
