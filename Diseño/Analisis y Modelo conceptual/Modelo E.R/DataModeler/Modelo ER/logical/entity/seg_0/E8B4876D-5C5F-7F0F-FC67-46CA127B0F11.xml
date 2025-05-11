@@ -24,9 +24,8 @@
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20 CHAR</dataTypeSize>
-<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="nombre" id="AC96D284-1051-DF68-679C-71281D0AA98F">
 <createdBy>ortiz</createdBy>
@@ -96,8 +95,9 @@
 <createdBy>ortiz</createdBy>
 <createdTime>2025-03-16 01:38:14 UTC</createdTime>
 <ownerDesignName>Modelo ER</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="B7ADF03B-6EE0-F8B6-ED9B-5F544F2AA87B" value="true"/>
+<item key="B7ADF03B-6EE0-F8B6-ED9B-5F544F2AA87B" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

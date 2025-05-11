@@ -213,7 +213,7 @@
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="89FF551F-1F2F-183F-86B0-E60F98820E9D" name="Afiliado_idAfiliado_UN">
+<ind_PK_UK id="89FF551F-1F2F-183F-86B0-E60F98820E9D" name="Afiliado_PKv1">
 <createdBy>ortiz</createdBy>
 <createdTime>2025-04-24 17:05:30 UTC</createdTime>
 <generatorID>89105D0C-EBEE-0607-4AB9-F281BE42BC3E</generatorID>
@@ -256,7 +256,7 @@
 <colUsage columnID="A755582B-3529-A5A5-BF30-270D189EDD46"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="738F6162-90C5-54CF-7479-1E077266002E" name="Afiliado_Afiliado_FKv2">
+<ind_PK_UK id="738F6162-90C5-54CF-7479-1E077266002E" name="Afiliado_Afiliado_FKv1">
 <createdBy>ortiz</createdBy>
 <createdTime>2025-05-10 20:06:33 UTC</createdTime>
 <generatorID>FEFC84EE-2A83-9F3A-99B2-05899E0705C4</generatorID>

@@ -117,16 +117,16 @@
 <ownerDesignName>Modelo ER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT011</logicalDatatype>
 <dataTypeSize>100</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="AA2AF2B1-CF85-A8DE-9487-109C9FF0F735" referredColumn="8AAEA2B0-7902-BCBC-134E-E554030322E4"/>
 </associations>
 </Column>
-<Column name="Afiliado_idAfiliado2" id="0452FF6D-36E3-AC4D-7D3E-9067BB43DE1A">
+<Column name="Afiliado_idAfiliado1" id="0452FF6D-36E3-AC4D-7D3E-9067BB43DE1A">
 <createdBy>ortiz</createdBy>
 <createdTime>2025-05-10 20:06:33 UTC</createdTime>
 <generatorID>C5B22CC3-B7B0-B6DB-002F-9DD6790D9970</generatorID>
@@ -178,7 +178,7 @@
 <colUsage columnID="B4CD3F4A-C8AE-665B-718C-FC41C02196B5"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="F7BD5CA3-5905-F524-815D-38155C6E8B73" name="OrdenServicio_Afiliado_FKv2">
+<ind_PK_UK id="F7BD5CA3-5905-F524-815D-38155C6E8B73" name="OrdenServicio_Afiliado_FKv1">
 <createdBy>ortiz</createdBy>
 <createdTime>2025-05-10 20:06:33 UTC</createdTime>
 <generatorID>8AD2873F-2C52-747B-F2CA-50D7D2969CDF</generatorID>
@@ -189,7 +189,7 @@
 <colUsage columnID="0452FF6D-36E3-AC4D-7D3E-9067BB43DE1A"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="56177853-8896-BFC9-158E-F4D1AE3D3F4B" name="OrdenServicio_Medico_FKv2">
+<ind_PK_UK id="56177853-8896-BFC9-158E-F4D1AE3D3F4B" name="OrdenServicio_Medico_FKv1">
 <createdBy>ortiz</createdBy>
 <createdTime>2025-05-10 20:06:33 UTC</createdTime>
 <generatorID>3B8440A9-54F0-7F70-978E-FF85712A5647</generatorID>

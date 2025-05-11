@@ -141,7 +141,7 @@
 <colAssociation fkAssociation="FEB6D08A-2640-76D4-AA1E-060237B72660" referredColumn="AB894F0C-5672-54E9-C12C-97D7575E511C"/>
 </associations>
 </Column>
-<Column name="Afiliado_idAfiliado2" id="D82C40BB-0464-5DD4-EAB1-86995ED2BAA4">
+<Column name="Afiliado_idAfiliado1" id="D82C40BB-0464-5DD4-EAB1-86995ED2BAA4">
 <createdBy>ortiz</createdBy>
 <createdTime>2025-05-10 20:06:33 UTC</createdTime>
 <generatorID>B3A43C7C-4411-F0ED-38A1-E8C3496AE92B</generatorID>
@@ -164,8 +164,7 @@
 <ownerDesignName>Modelo ER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>100</dataTypeSize>
+<logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
@@ -231,7 +230,7 @@
 <colUsage columnID="78C1A96D-3131-634A-2FC2-458AF72DEF91"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="797104AA-409A-6729-88AE-936BD7345950" name="Cita_Afiliado_FKv2">
+<ind_PK_UK id="797104AA-409A-6729-88AE-936BD7345950" name="Cita_Afiliado_FKv1">
 <createdBy>ortiz</createdBy>
 <createdTime>2025-05-10 20:06:33 UTC</createdTime>
 <generatorID>9193189E-0B1F-CFE7-D2C3-69F62836F060</generatorID>
@@ -242,7 +241,7 @@
 <colUsage columnID="D82C40BB-0464-5DD4-EAB1-86995ED2BAA4"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="F4D76300-DB24-95F2-33AA-2CC41545CD02" name="Cita_Medico_FKv2">
+<ind_PK_UK id="F4D76300-DB24-95F2-33AA-2CC41545CD02" name="Cita_Medico_FKv1">
 <createdBy>ortiz</createdBy>
 <createdTime>2025-05-10 20:06:33 UTC</createdTime>
 <generatorID>923D7330-E804-D097-1C96-9F8F9B39B90D</generatorID>

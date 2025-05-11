@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AA2AF2B1-CF85-A8DE-9487-109C9FF0F735" containerWithKeyObject="C45001D6-0A01-2883-B8D0-F8B41CC5110A" localFKIndex="56177853-8896-BFC9-158E-F4D1AE3D3F4B" name="OrdenServicio_Medico_FKv2">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AA2AF2B1-CF85-A8DE-9487-109C9FF0F735" containerWithKeyObject="C45001D6-0A01-2883-B8D0-F8B41CC5110A" localFKIndex="56177853-8896-BFC9-158E-F4D1AE3D3F4B" name="OrdenServicio_Medico_FKv1">
 <createdBy>ortiz</createdBy>
 <createdTime>2025-05-10 20:06:33 UTC</createdTime>
 <generatorID>3B8440A9-54F0-7F70-978E-FF85712A5647</generatorID>
@@ -10,7 +10,7 @@
 <keyObject>0B5A66A9-6871-105C-D2CD-1EC064B1EF88</keyObject>
 <referredKeyID>0B5A66A9-6871-105C-D2CD-1EC064B1EF88</referredKeyID>
 <mandatory>true</mandatory>
-<refColNames>registroMedico1</refColNames>
+<refColNames>registroMedico2</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

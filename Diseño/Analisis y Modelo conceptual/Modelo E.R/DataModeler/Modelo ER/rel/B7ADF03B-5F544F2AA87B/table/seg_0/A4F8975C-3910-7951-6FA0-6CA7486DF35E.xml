@@ -68,19 +68,18 @@
 <ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="registroMedico1" id="8AAEA2B0-7902-BCBC-134E-E554030322E4">
+<Column name="registroMedico2" id="8AAEA2B0-7902-BCBC-134E-E554030322E4">
 <createdBy>ortiz</createdBy>
 <createdTime>2025-05-10 20:06:33 UTC</createdTime>
 <generatorID>488B351B-1751-D8C4-32D3-C61A69BA4FCE</generatorID>
 <ownerDesignName>Modelo ER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>100</dataTypeSize>
-<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="nombre1" id="149D8D01-58CB-1A01-F9F3-ED7BD2E69B6B">
+<Column name="nombre2" id="149D8D01-58CB-1A01-F9F3-ED7BD2E69B6B">
 <createdBy>ortiz</createdBy>
 <createdTime>2025-05-10 20:06:33 UTC</createdTime>
 <generatorID>903C513A-A835-9E7E-492B-3648B8380DE0</generatorID>
@@ -92,7 +91,7 @@
 <ownDataTypeParameters>200,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="tipoDocumento1" id="C74BF59F-D6EB-4A5A-793A-D3B5EA4679A1">
+<Column name="tipoDocumento2" id="C74BF59F-D6EB-4A5A-793A-D3B5EA4679A1">
 <createdBy>ortiz</createdBy>
 <createdTime>2025-05-10 20:06:33 UTC</createdTime>
 <generatorID>A8099ABC-F6CD-80C1-3B8A-CAE14734FCF3</generatorID>
@@ -104,7 +103,7 @@
 <ownDataTypeParameters>200,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="numDocumento1" id="ED8B6C14-B235-9647-9BB7-13D0038C78EF">
+<Column name="numDocumento2" id="ED8B6C14-B235-9647-9BB7-13D0038C78EF">
 <createdBy>ortiz</createdBy>
 <createdTime>2025-05-10 20:06:33 UTC</createdTime>
 <generatorID>B16B2D94-0825-E93C-4DEE-9A27EB758853</generatorID>
@@ -115,7 +114,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="especialidad1" id="ABC947D5-0320-062E-BD5B-661BF6BD7003">
+<Column name="especialidad2" id="ABC947D5-0320-062E-BD5B-661BF6BD7003">
 <createdBy>ortiz</createdBy>
 <createdTime>2025-05-10 20:06:33 UTC</createdTime>
 <generatorID>70D5140C-C61D-2154-FD4C-AB4B9C04F3EF</generatorID>
