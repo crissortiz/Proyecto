@@ -2,34 +2,32 @@ package uniandes.edu.co.proyecto.modelo;
 
 import java.io.Serializable;
 
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
-@Embeddable
-public class AtiendePK implements Serializable{
+public class PrestacionPK implements Serializable{
 
     @ManyToOne
-    @JoinColumn(name = "Medico_registroMedico1", referencedColumnName = "id")
-    private Medico registroMedico;
+    @JoinColumn(name = "IPS_nit", referencedColumnName = "id")
+    private Ips nit;
 
     @ManyToOne
     @JoinColumn(name = "ServicioSalud_idServicio", referencedColumnName = "id")
     private ServicioSalud idServicio;
 
-    public AtiendePK(Medico registroMedico, ServicioSalud idServicio) {
-        this.registroMedico = registroMedico;
+    public PrestacionPK(Ips nit, ServicioSalud idServicio) {
+        this.nit = nit;
         this.idServicio = idServicio;
     }
 
-    public void setRegistroMedico(Medico registroMedico) {
-        this.registroMedico = registroMedico;
+    public void setNit(Ips nit) {
+        this.nit = nit;
     }
     public void setIdServicio(ServicioSalud idServicio) {
         this.idServicio = idServicio;
     }
-    public Medico getRegistroMedico() {
-        return registroMedico;
+    public Ips getNit() {
+        return nit;
     }
     public ServicioSalud getIdServicio() {
         return idServicio;
