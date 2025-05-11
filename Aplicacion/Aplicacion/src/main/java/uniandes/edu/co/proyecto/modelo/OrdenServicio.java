@@ -1,6 +1,8 @@
 package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.util.Date;
@@ -12,21 +14,21 @@ import jakarta.persistence.TemporalType;
 public class OrdenServicio {
 
     @Id
-    private String idOrden;       // VARCHAR
+    @GeneratedValue(strategy = GenerationType.AUTO)      
+    private Integer idOrden; 
+
     @Temporal(TemporalType.DATE)
-    private Date fecha;           // Date
-    private String estadoOrden;   // VARCHAR
-    private String tipoOrden;     // VARCHAR
-    private String descripcion;   // VARCHAR
-    private String registroMedico; // VARCHAR  (FK to Medico)
-    private String idServicio;    // VARCHAR  (FK to ServicioSalud)
+    private Date fecha;           
+    private String estadoOrden;   
+    private String tipoOrden;     
+    private String descripcion;   
+    private String registroMedico; 
+    private String idServicio;    
     private String idAfiliado;
 
-    public OrdenServicio() {
-    }
+    
 
-    public OrdenServicio(String idOrden, Date fecha, String estadoOrden, String tipoOrden, String descripcion, String registroMedico, String idServicio, String idAfiliado) {
-        this.idOrden = idOrden;
+    public OrdenServicio(Date fecha, String estadoOrden, String tipoOrden, String descripcion, String registroMedico, String idServicio, String idAfiliado) {
         this.fecha = fecha;
         this.estadoOrden = estadoOrden;
         this.tipoOrden = tipoOrden;
@@ -36,13 +38,8 @@ public class OrdenServicio {
         this.idAfiliado = idAfiliado;
     }
 
-    public String getIdOrden() {
-        return idOrden;
-    }
-
-    public void setIdOrden(String idOrden) {
-        this.idOrden = idOrden;
-    }
+    public OrdenServicio() 
+    {;}
 
     public Date getFecha() {
         return fecha;

@@ -1,6 +1,8 @@
 package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -9,30 +11,25 @@ import jakarta.persistence.Table;
 public class ServicioSalud {
 
     @Id
-    private String idServicio;  // VARCHAR2(20)
-    private String nombre;       // VARCHAR2(100)
-    private String tipoServicio; // VARCHAR2(100)
-    private boolean requiereOrden; // Boolean (1) - Map to boolean
-    private String descripcion;  // VARCHAR2(300)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer idServicio;  
 
-    public ServicioSalud() {
-    }
+    private String nombre;       
+    private String tipoServicio; 
+    private boolean requiereOrden;
+    private String descripcion; 
 
-    public ServicioSalud(String idServicio, String nombre, String tipoServicio, boolean requiereOrden, String descripcion) {
-        this.idServicio = idServicio;
-        this.nombre = nombre;
+    
+
+    public ServicioSalud(String tipoServicio, boolean requiereOrden, String descripcion) {
+ 
         this.tipoServicio = tipoServicio;
         this.requiereOrden = requiereOrden;
         this.descripcion = descripcion;
     }
 
-    public String getIdServicio() {
-        return idServicio;
-    }
-
-    public void setIdServicio(String idServicio) {
-        this.idServicio = idServicio;
-    }
+    public ServicioSalud() 
+    {;}
 
     public String getNombre() {
         return nombre;

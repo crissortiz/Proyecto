@@ -11,30 +11,22 @@ public class Medico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer registroMedico; 
+    private Integer registroMedico;
+
     private String nombre;
     private String tipoDocumento;
     private Integer numDocumento;
     private String especialidad;
 
-    public Medico() {
-    }
-
-    public Medico(Integer registroMedico, String nombre, String tipoDocumento, Integer numDocumento, String especialidad) {
-        this.registroMedico = registroMedico;
+    public Medico(String nombre, String tipoDocumento, Integer numDocumento, String especialidad) {
         this.nombre = nombre;
         this.tipoDocumento = tipoDocumento;
         this.numDocumento = numDocumento;
         this.especialidad = especialidad;
     }
 
-    public Integer getRegistroMedico() {
-        return registroMedico;
-    }
-
-    public void setRegistroMedico(Integer registroMedico) {
-        this.registroMedico = registroMedico;
-    }
+    public Medico() 
+    {;}
 
     public String getNombre() {
         return nombre;

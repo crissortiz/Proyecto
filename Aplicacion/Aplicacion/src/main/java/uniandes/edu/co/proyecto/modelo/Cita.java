@@ -1,6 +1,8 @@
 package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.util.Date;
@@ -12,19 +14,17 @@ import jakarta.persistence.TemporalType;
 public class Cita {
 
     @Id
-    private String idCita;        // VARCHAR
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer idCita;    
+    
     @Temporal(TemporalType.DATE)
-    private Date fecha;           // Date
-    private String estadoCita;    // VARCHAR
-    private String idOrden;       // VARCHAR (FK to OrdenServicio)
-    private String idAfiliado;    // VARCHAR (FK to Afiliado)
-    private String registroMedico; // VARCHAR (FK to Medico)
+    private Date fecha;           
+    private String estadoCita;    
+    private String idOrden;       
+    private String idAfiliado;    
+    private String registroMedico; 
 
-    public Cita() {
-    }
-
-    public Cita(String idCita, Date fecha, String estadoCita, String idOrden, String idAfiliado, String registroMedico) {
-        this.idCita = idCita;
+    public Cita(Date fecha, String estadoCita, String idOrden, String idAfiliado, String registroMedico) {
         this.fecha = fecha;
         this.estadoCita = estadoCita;
         this.idOrden = idOrden;
@@ -32,13 +32,8 @@ public class Cita {
         this.registroMedico = registroMedico;
     }
 
-    public String getIdCita() {
-        return idCita;
-    }
-
-    public void setIdCita(String idCita) {
-        this.idCita = idCita;
-    }
+    public Cita() 
+    {;}
 
     public Date getFecha() {
         return fecha;

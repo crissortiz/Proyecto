@@ -1,39 +1,37 @@
 package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.util.Date;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 
 @Entity
 @Table(name = "Afiliado")
 public class Afiliado {
 
     @Id
-    private String idAfiliado;     // VARCHAR
-    private String nombre;         // VARCHAR
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer idAfiliado;   
+
+    private String nombre;         
     @Temporal(TemporalType.DATE)
-    private Date fechaNacimiento;  // Date
-    private String tipoAfiliado;  // VARCHAR
-    private String tipoDocumento;  // VARCHAR
-    private Integer numDocumento;   // Integer
-    private String direccion;      // VARCHAR
-    private String telefono;       // VARCHAR
-    private String idAfiliado1;   // VARCHAR (FK to Afiliado - Self-Reference)
+    private Date fechaNacimiento;  
+    private String tipoAfiliado;  
+    private String tipoDocumento;  
+    private Integer numDocumento;   
+    private String direccion;      
+    private String telefono;       
+    private String idAfiliado1;   
 
-    @ManyToOne
-    @JoinColumn(name = "Medico_idAfiliado")  // Corrected column name
-    private Medico medico;        //  FK to Medico
 
-    public Afiliado() {
-    }
+    
 
-    public Afiliado(String idAfiliado, String nombre, Date fechaNacimiento, String tipoAfiliado, String tipoDocumento, Integer numDocumento, String direccion, String telefono, String idAfiliado1, Medico medico) {
-        this.idAfiliado = idAfiliado;
+    public Afiliado(String nombre, Date fechaNacimiento, String tipoAfiliado, String tipoDocumento, Integer numDocumento, String direccion, String telefono, String idAfiliado1, Medico medico) {
+
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.tipoAfiliado = tipoAfiliado;
@@ -42,16 +40,10 @@ public class Afiliado {
         this.direccion = direccion;
         this.telefono = telefono;
         this.idAfiliado1 = idAfiliado1;
-        this.medico = medico;
     }
 
-    public String getIdAfiliado() {
-        return idAfiliado;
-    }
-
-    public void setIdAfiliado(String idAfiliado) {
-        this.idAfiliado = idAfiliado;
-    }
+    public Afiliado() 
+    {;}
 
     public String getNombre() {
         return nombre;
@@ -117,12 +109,5 @@ public class Afiliado {
         this.idAfiliado1 = idAfiliado1;
     }
 
-    public Medico getMedico() {
-        return medico;
-    }
 
-    
-    public void setMedico(Medico medico) {
-        this.medico = medico;
-    }
 }

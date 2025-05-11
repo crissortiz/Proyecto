@@ -11,7 +11,8 @@ public class Ips {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private String nit;
+
     private String nombre;
     private String direccion;
     private String telefono;
@@ -23,12 +24,6 @@ public class Ips {
     }
     public Ips() 
     {;}
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getNombre() {
         return nombre;
