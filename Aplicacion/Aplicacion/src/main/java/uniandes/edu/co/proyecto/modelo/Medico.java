@@ -1,4 +1,5 @@
 package uniandes.edu.co.proyecto.modelo;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,11 +12,19 @@ public class Medico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+        @Column(name = "REGISTROMEDICO")
     private Integer registroMedico;
 
+    @Column(name = "NOMBRE")
     private String nombre;
+
+    @Column(name = "TIPODOCUMENTO")
     private String tipoDocumento;
+
+    @Column(name = "NUMDOCUMENTO")
     private Integer numDocumento;
+
+    @Column(name = "ESPECIALIDAD")
     private String especialidad;
 
     public Medico(Integer registroMedico, String nombre, String tipoDocumento, Integer numDocumento, String especialidad) {
@@ -69,4 +78,16 @@ public class Medico {
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
+
+    @Override
+public String toString() {
+    return "Medico{" +
+            "registroMedico=" + registroMedico +
+            ", nombre='" + nombre + '\'' +
+            ", tipoDocumento='" + tipoDocumento + '\'' +
+            ", numDocumento=" + numDocumento +
+            ", especialidad='" + especialidad + '\'' +
+            '}';
+}
+
 }
