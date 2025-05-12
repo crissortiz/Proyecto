@@ -16,7 +16,8 @@ public class Ips {
     private String direccion;
     private String telefono;
 
-    public Ips(String nombre, String direccion, String telefono){
+    public Ips(String nit, String nombre, String direccion, String telefono){
+        this.nit = nit;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
@@ -24,6 +25,12 @@ public class Ips {
     public Ips() 
     {;}
 
+    public String getNit() {
+        return nit;
+    }
+    public void setNit(String nit) {
+        this.nit = nit;
+    }
     public String getNombre() {
         return nombre;
     }
