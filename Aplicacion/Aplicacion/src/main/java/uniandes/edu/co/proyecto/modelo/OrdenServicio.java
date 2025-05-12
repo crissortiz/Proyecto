@@ -28,7 +28,9 @@ public class OrdenServicio {
 
     
 
-    public OrdenServicio(Date fecha, String estadoOrden, String tipoOrden, String descripcion, String registroMedico, String idServicio, String idAfiliado) {
+    public OrdenServicio(Integer idOrden, Date fecha, String estadoOrden, String tipoOrden, String descripcion, String registroMedico, String idServicio, String idAfiliado) {
+        
+        this.idOrden = idOrden;
         this.fecha = fecha;
         this.estadoOrden = estadoOrden;
         this.tipoOrden = tipoOrden;
@@ -40,6 +42,14 @@ public class OrdenServicio {
 
     public OrdenServicio() 
     {;}
+
+    public Integer getIdOrden() {
+        return idOrden;
+    }
+
+    public void setIdOrden(Integer idOrden) {
+        this.idOrden = idOrden;
+    }
 
     public Date getFecha() {
         return fecha;

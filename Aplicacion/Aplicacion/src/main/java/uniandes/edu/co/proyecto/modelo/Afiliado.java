@@ -30,8 +30,9 @@ public class Afiliado {
 
     
 
-    public Afiliado(String nombre, Date fechaNacimiento, String tipoAfiliado, String tipoDocumento, Integer numDocumento, String direccion, String telefono, String idAfiliado1, Medico medico) {
+    public Afiliado(Integer idAfiliado, String nombre, Date fechaNacimiento, String tipoAfiliado, String tipoDocumento, Integer numDocumento, String direccion, String telefono, String idAfiliado1, Medico medico) {
 
+        this.idAfiliado = idAfiliado;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.tipoAfiliado = tipoAfiliado;
@@ -45,6 +46,13 @@ public class Afiliado {
     public Afiliado() 
     {;}
 
+    public Integer getIdAfiliado() {
+        return idAfiliado;
+    }
+    public void setIdAfiliado(Integer idAfiliado) {
+        this.idAfiliado = idAfiliado;
+    }
+    
     public String getNombre() {
         return nombre;
     }

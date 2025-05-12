@@ -18,7 +18,9 @@ public class Medico {
     private Integer numDocumento;
     private String especialidad;
 
-    public Medico(String nombre, String tipoDocumento, Integer numDocumento, String especialidad) {
+    public Medico(Integer registroMedico, String nombre, String tipoDocumento, Integer numDocumento, String especialidad) {
+        
+        this.registroMedico = registroMedico;
         this.nombre = nombre;
         this.tipoDocumento = tipoDocumento;
         this.numDocumento = numDocumento;
@@ -27,6 +29,14 @@ public class Medico {
 
     public Medico() 
     {;}
+
+    public Integer getRegistroMedico() {
+        return registroMedico;
+    }
+
+    public void setRegistroMedico(Integer registroMedico) {
+        this.registroMedico = registroMedico;
+    }
 
     public String getNombre() {
         return nombre;

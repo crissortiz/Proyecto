@@ -21,8 +21,9 @@ public class ServicioSalud {
 
     
 
-    public ServicioSalud(String tipoServicio, boolean requiereOrden, String descripcion) {
+    public ServicioSalud(Integer idServicio, String tipoServicio, boolean requiereOrden, String descripcion) {
  
+        this.idServicio = idServicio;
         this.tipoServicio = tipoServicio;
         this.requiereOrden = requiereOrden;
         this.descripcion = descripcion;
@@ -30,6 +31,14 @@ public class ServicioSalud {
 
     public ServicioSalud() 
     {;}
+
+    public Integer getIdServicio() {
+        return idServicio;
+    }
+
+    public void setIdServicio(Integer idServicio) {
+        this.idServicio = idServicio;
+    }
 
     public String getNombre() {
         return nombre;

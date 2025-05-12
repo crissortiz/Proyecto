@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
 
 import uniandes.edu.co.proyecto.modelo.Ips;
 import uniandes.edu.co.proyecto.repositorio.IpsRepository;
 
-@RestController
+@Controller
 public class IpsController {
 
     @Autowired
@@ -22,7 +23,7 @@ public class IpsController {
     @GetMapping("/ipss")
     public String ipss(Model model){
         model.addAttribute("ips", ipsRepository.findAllIps());
-        return model.toString();
+        return "ips";
     }
 
     @GetMapping("/ipss/new")

@@ -24,7 +24,9 @@ public class Cita {
     private String idAfiliado;    
     private String registroMedico; 
 
-    public Cita(Date fecha, String estadoCita, String idOrden, String idAfiliado, String registroMedico) {
+    public Cita(Integer idCita, Date fecha, String estadoCita, String idOrden, String idAfiliado, String registroMedico) {
+        
+        this.idCita = idCita;
         this.fecha = fecha;
         this.estadoCita = estadoCita;
         this.idOrden = idOrden;
@@ -35,6 +37,13 @@ public class Cita {
     public Cita() 
     {;}
 
+    public Integer getIdCita() {
+        return idCita;
+    }
+    public void setIdCita(Integer idCita) {
+        this.idCita = idCita;
+    }
+    
     public Date getFecha() {
         return fecha;
     }
