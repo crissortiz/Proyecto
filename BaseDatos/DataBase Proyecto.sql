@@ -415,6 +415,17 @@ INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, 
 INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (9, SYSDATE - 6, 'Vigente', 'Servicio', 'Examen de sangre general', 1002, 9);
 INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (10, SYSDATE - 9, 'Vencida', 'Servicio', 'Consulta ginecológica', 1004, 6);
 
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (11, SYSDATE +  2, 'Vigente',    'Servicio',  'Consulta General ampliada',       1001,  2);
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (12, SYSDATE +  5, 'Vigente',    'Servicio',  'Consulta Especialista Pediatría',  1002,  3);
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (13, SYSDATE +  7, 'Vigente',    'Terapia',   'Sesión de Terapia Física',         1008,  5);
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (14, SYSDATE + 10, 'Vigente',    'Servicio',  'Examen de Sangre urgente',         1003,  1);
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (15, SYSDATE + 12, 'Vigente',    'Servicio',  'Radiografía de tórax',             1003,  4);
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (16, SYSDATE + 15, 'Vigente',    'Servicio',  'Consulta Dermatología',            1005,  6);
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (17, SYSDATE + 18, 'Vigente',    'Terapia',   'Terapia Física avanzada',          1008,  7);
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (18, SYSDATE + 20, 'Vigente',    'Servicio',  'Consulta Neurología urgente',      1009,  8);
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (19, SYSDATE + 22, 'Vigente',    'Servicio',  'Consulta Psiquiatría seguimiento', 1010,  9);
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (20, SYSDATE + 25, 'Vigente',    'Servicio',  'Hospitalización General',          1007, 10);
+
 INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (4, 1);
 INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (6, 2);
 INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (9, 3);
@@ -425,6 +436,18 @@ INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES 
 INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (2, 8);
 INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (4, 9);
 INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (2, 10);
+
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (1,  11);
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (2,  12);
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (6,  13);
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (4,  14);
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (5,  15);
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (8,  16);
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (6,  17);
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (9,  18);
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (10, 19);
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (7,  20);
+
 
 INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (1, SYSDATE - 9, 'Completa', 1, 1, 1002);
 INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (2, SYSDATE - 5, 'Ocupada', 2, 3, 1008);
@@ -437,4 +460,127 @@ INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idA
 INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (9, SYSDATE - 2, 'Disponible', 9, 9, 1002);
 INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (10, SYSDATE - 10, 'Ocupada', 10, 6, 1004);
 
-select *from cita
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (11, SYSDATE +  2, 'Disponible', 11,  2, 1001);
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (12, SYSDATE +  5, 'Disponible', 12,  3, 1002);
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (13, SYSDATE +  7, 'Disponible', 13,  5, 1008);
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (14, SYSDATE + 10, 'Disponible', 14,  1, 1003);
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (15, SYSDATE + 12, 'Disponible', 15,  4, 1003);
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (16, SYSDATE + 15, 'Disponible', 16,  6, 1005);
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (17, SYSDATE + 18, 'Disponible', 17,  7, 1008);
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (18, SYSDATE + 20, 'Disponible', 18,  8, 1009);
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (19, SYSDATE + 22, 'Disponible', 19,  9, 1010);
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (20, SYSDATE + 25, 'Disponible', 20, 10, 1007);
+
+-- RFC1:
+
+SELECT 
+  ss.nombre   AS servicio,
+  c.fecha     AS fecha_hora,
+  ips.nombre  AS ips,
+  m.nombre    AS medico
+FROM Cita c
+  JOIN Especifica e 
+    ON e.OrdenServicio_idOrden = c.OrdenServicio_idOrden
+  JOIN ServicioSalud ss 
+    ON ss.idServicio = e.ServicioSalud_idServicio
+  JOIN Trabajo t 
+    ON t.Medico_registroMedico1 = c.Medico_registroMedico1
+  JOIN IPS ips 
+    ON ips.nit = t.IPS_nit
+  JOIN Medico m 
+    ON m.registroMedico = c.Medico_registroMedico1
+WHERE 
+  e.ServicioSalud_idServicio = &servicio_id  
+  AND c.estadoCita             = 'Disponible'
+  AND c.fecha BETWEEN SYSDATE AND SYSDATE+28
+ORDER BY c.fecha;
+
+-- RFC2: Mostrar los 20 servicios más solicitados en un período dado
+
+SELECT 
+  ss.idServicio,
+  ss.nombre,
+  COUNT(*) AS total_solicitudes
+FROM Cita c
+JOIN Especifica e
+  ON c.OrdenServicio_idOrden = e.OrdenServicio_idOrden
+JOIN ServicioSalud ss
+  ON ss.idServicio = e.ServicioSalud_idServicio
+WHERE c.fecha 
+  BETWEEN TO_DATE('&fecha_inicio','YYYY-MM-DD') 
+      AND TO_DATE('&fecha_fin'   ,'YYYY-MM-DD')
+GROUP BY ss.idServicio, ss.nombre
+ORDER BY total_solicitudes DESC
+FETCH FIRST 20 ROWS ONLY;
+
+-- RFC3: Índice de uso de cada servicio en un período dado
+
+VAR fecha_inicio VARCHAR2(10);
+VAR fecha_fin    VARCHAR2(10);
+
+-- Puedes obviar estas dos líneas si prefieres sólo &fecha_inicio/&fecha_fin
+EXEC :fecha_inicio := '&fecha_inicio';
+EXEC :fecha_fin    := '&fecha_fin';
+
+WITH
+  disponibles AS (
+    SELECT 
+      p.ServicioSalud_idServicio AS idServicio,
+      COUNT(*)                  AS cnt_disp
+    FROM Prestacion p
+    GROUP BY p.ServicioSalud_idServicio
+  ),
+  usados AS (
+    SELECT 
+      e.ServicioSalud_idServicio AS idServicio,
+      COUNT(*)                  AS cnt_usados
+    FROM Cita c
+    JOIN Especifica e 
+      ON c.OrdenServicio_idOrden = e.OrdenServicio_idOrden
+    WHERE c.estadoCita = 'Completa'
+      AND c.fecha BETWEEN 
+          TO_DATE(:fecha_inicio,'YYYY-MM-DD') 
+      AND TO_DATE(:fecha_fin   ,'YYYY-MM-DD')
+    GROUP BY e.ServicioSalud_idServicio
+  )
+SELECT
+  ss.idServicio,
+  ss.nombre,
+  NVL(d.cnt_disp, 0)   AS disponibles,
+  NVL(u.cnt_usados, 0) AS usados,
+  CASE 
+    WHEN NVL(u.cnt_usados, 0) = 0 THEN NULL
+    ELSE ROUND(d.cnt_disp / u.cnt_usados, 2)
+  END AS indice_uso
+FROM ServicioSalud ss
+LEFT JOIN disponibles d 
+  ON d.idServicio = ss.idServicio
+LEFT JOIN usados u 
+  ON u.idServicio = ss.idServicio
+ORDER BY ss.idServicio;
+
+-- RFC4: Utilización de servicios de un afiliado en un rango de fechas
+
+SELECT
+  ss.nombre    AS servicio,
+  c.fecha      AS fecha_tomado,
+  m.nombre     AS medico,
+  ips.nombre   AS ips
+FROM Cita c
+JOIN Especifica e 
+  ON e.OrdenServicio_idOrden = c.OrdenServicio_idOrden
+JOIN ServicioSalud ss 
+  ON ss.idServicio = e.ServicioSalud_idServicio
+JOIN Trabajo t 
+  ON t.Medico_registroMedico1 = c.Medico_registroMedico1
+JOIN IPS ips      
+  ON ips.nit = t.IPS_nit
+JOIN Medico m    
+  ON m.registroMedico = c.Medico_registroMedico1
+WHERE
+  c.Afiliado_idAfiliado = &afiliado_id
+  AND c.fecha BETWEEN 
+      TO_DATE('&fecha_inicio','YYYY-MM-DD') 
+  AND TO_DATE('&fecha_fin'   ,'YYYY-MM-DD')
+ORDER BY c.fecha;
+
