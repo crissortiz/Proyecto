@@ -28,5 +28,5 @@ public interface ServicioSaludRepository extends JpaRepository<ServicioSalud, In
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM ServicioSalud WHERE idServicio = :idServicio", nativeQuery = true)
-    void deleteServicioSalud(@Param("idServicio") Integer idServicio, @Param("nombre") String nombre, @Param("descripcion") String descripcion, @Param("tipoServicio") String tipoServicio, @Param("requiereOrden") Character requiereOrden);
+    void deleteServicioSalud(@Param("idServicio") Integer idServicio);
 }
