@@ -337,4 +337,104 @@ BEGIN
     :NEW.idAfiliado := Afiliado_idAfiliado_SEQ.NEXTVAL;
 END;
 /
-                                        
+                    
+
+
+//Poblacion
+
+INSERT INTO IPS (nit, nombre, direccion, telefono) VALUES ('900123456-1', 'Clínica Central', 'Cra 10 #20-30', '6011234567');
+INSERT INTO IPS (nit, nombre, direccion, telefono) VALUES ('900123457-2', 'Hospital Norte', 'Av 1 #15-45', '6012345678');
+INSERT INTO IPS (nit, nombre, direccion, telefono) VALUES ('900123458-3', 'Centro Médico Sur', 'Calle 50 #10-20', '6013456789');
+INSERT INTO IPS (nit, nombre, direccion, telefono) VALUES ('900123459-4', 'Clínica Occidente', 'Cra 70 #80-90', '6014567890');
+INSERT INTO IPS (nit, nombre, direccion, telefono) VALUES ('900123460-5', 'IPS Oriente Salud', 'Av 40 #22-33', '6015678901');
+
+INSERT INTO Medico (registroMedico, nombre, tipoDocumento, numDocumento, especialidad) VALUES (1001, 'Dra. Laura Gómez', 'CC', 12345678, 'Pediatría');
+INSERT INTO Medico (registroMedico, nombre, tipoDocumento, numDocumento, especialidad) VALUES (1002, 'Dr. Juan Pérez', 'CC', 22345678, 'Medicina Interna');
+INSERT INTO Medico (registroMedico, nombre, tipoDocumento, numDocumento, especialidad) VALUES (1003, 'Dr. Andrés Ruiz', 'CC', 32345678, 'Ortopedia');
+INSERT INTO Medico (registroMedico, nombre, tipoDocumento, numDocumento, especialidad) VALUES (1004, 'Dra. Carolina Nieto', 'CC', 42345678, 'Ginecología');
+INSERT INTO Medico (registroMedico, nombre, tipoDocumento, numDocumento, especialidad) VALUES (1005, 'Dr. Felipe Ríos', 'CC', 52345678, 'Dermatología');
+INSERT INTO Medico (registroMedico, nombre, tipoDocumento, numDocumento, especialidad) VALUES (1006, 'Dra. Natalia Díaz', 'CC', 62345678, 'Medicina General');
+INSERT INTO Medico (registroMedico, nombre, tipoDocumento, numDocumento, especialidad) VALUES (1007, 'Dr. Miguel Suárez', 'CC', 72345678, 'Urgencias');
+INSERT INTO Medico (registroMedico, nombre, tipoDocumento, numDocumento, especialidad) VALUES (1008, 'Dra. Paula Martínez', 'CC', 82345678, 'Terapia Física');
+INSERT INTO Medico (registroMedico, nombre, tipoDocumento, numDocumento, especialidad) VALUES (1009, 'Dr. Jaime Herrera', 'CC', 92345678, 'Neurología');
+INSERT INTO Medico (registroMedico, nombre, tipoDocumento, numDocumento, especialidad) VALUES (1010, 'Dra. Verónica Ramírez', 'CC', 102345678, 'Psiquiatría');
+
+
+INSERT INTO Trabajo (IPS_nit, Medico_registroMedico1) VALUES ('900123456-1', 1001);
+INSERT INTO Trabajo (IPS_nit, Medico_registroMedico1) VALUES ('900123456-1', 1002);
+INSERT INTO Trabajo (IPS_nit, Medico_registroMedico1) VALUES ('900123457-2', 1003);
+INSERT INTO Trabajo (IPS_nit, Medico_registroMedico1) VALUES ('900123457-2', 1004);
+INSERT INTO Trabajo (IPS_nit, Medico_registroMedico1) VALUES ('900123458-3', 1005);
+INSERT INTO Trabajo (IPS_nit, Medico_registroMedico1) VALUES ('900123458-3', 1006);
+INSERT INTO Trabajo (IPS_nit, Medico_registroMedico1) VALUES ('900123459-4', 1007);
+INSERT INTO Trabajo (IPS_nit, Medico_registroMedico1) VALUES ('900123459-4', 1008);
+INSERT INTO Trabajo (IPS_nit, Medico_registroMedico1) VALUES ('900123460-5', 1009);
+INSERT INTO Trabajo (IPS_nit, Medico_registroMedico1) VALUES ('900123460-5', 1010);
+
+INSERT INTO ServicioSalud (idServicio, nombre, descripcion, tipoServicio, requiereOrden) VALUES (1, 'Consulta General', 'Consulta médica básica', 'ConsultaGeneral', 'N');
+INSERT INTO ServicioSalud (idServicio, nombre, descripcion, tipoServicio, requiereOrden) VALUES (2, 'Consulta Especialista - Pediatría', 'Atención pediátrica', 'ConsultaEspecialista', 'S');
+INSERT INTO ServicioSalud (idServicio, nombre, descripcion, tipoServicio, requiereOrden) VALUES (3, 'Consulta de Urgencias', 'Atención en urgencias', 'ConsultaUrgente', 'N');
+INSERT INTO ServicioSalud (idServicio, nombre, descripcion, tipoServicio, requiereOrden) VALUES (4, 'Examen de Sangre', 'Laboratorio clínico', 'ExamenDiagnostico', 'S');
+INSERT INTO ServicioSalud (idServicio, nombre, descripcion, tipoServicio, requiereOrden) VALUES (5, 'Radiografía', 'Imagenología básica', 'ExamenDiagnostico', 'S');
+INSERT INTO ServicioSalud (idServicio, nombre, descripcion, tipoServicio, requiereOrden) VALUES (6, 'Terapia Física', 'Sesiones de rehabilitación', 'Terapia', 'S');
+INSERT INTO ServicioSalud (idServicio, nombre, descripcion, tipoServicio, requiereOrden) VALUES (7, 'Hospitalización General', 'Internación hospitalaria', 'Hospitalizacion', 'S');
+INSERT INTO ServicioSalud (idServicio, nombre, descripcion, tipoServicio, requiereOrden) VALUES (8, 'Dermatología', 'Consulta con dermatólogo', 'ConsultaEspecialista', 'S');
+INSERT INTO ServicioSalud (idServicio, nombre, descripcion, tipoServicio, requiereOrden) VALUES (9, 'Consulta Neurología', 'Especialista en sistema nervioso', 'ConsultaEspecialista', 'S');
+INSERT INTO ServicioSalud (idServicio, nombre, descripcion, tipoServicio, requiereOrden) VALUES (10, 'Consulta Psiquiatría', 'Evaluación mental', 'ConsultaEspecialista', 'S');
+
+INSERT INTO Prestacion (IPS_nit, ServicioSalud_idServicio) VALUES ('900123456-1', 1);
+INSERT INTO Prestacion (IPS_nit, ServicioSalud_idServicio) VALUES ('900123456-1', 2);
+INSERT INTO Prestacion (IPS_nit, ServicioSalud_idServicio) VALUES ('900123457-2', 3);
+INSERT INTO Prestacion (IPS_nit, ServicioSalud_idServicio) VALUES ('900123457-2', 4);
+INSERT INTO Prestacion (IPS_nit, ServicioSalud_idServicio) VALUES ('900123458-3', 5);
+INSERT INTO Prestacion (IPS_nit, ServicioSalud_idServicio) VALUES ('900123458-3', 6);
+INSERT INTO Prestacion (IPS_nit, ServicioSalud_idServicio) VALUES ('900123459-4', 7);
+INSERT INTO Prestacion (IPS_nit, ServicioSalud_idServicio) VALUES ('900123459-4', 8);
+INSERT INTO Prestacion (IPS_nit, ServicioSalud_idServicio) VALUES ('900123460-5', 9);
+INSERT INTO Prestacion (IPS_nit, ServicioSalud_idServicio) VALUES ('900123460-5', 10);
+
+INSERT INTO Afiliado (idAfiliado, tipoDocumento, numDocumento, nombre, fechaNacimiento, direccion, telefono, tipoAfiliado, parentesco, afiliadoDependienteId) VALUES (1, 'CC', 1100110011, 'Carlos Mendoza', TO_DATE('1980-05-12','YYYY-MM-DD'), 'Calle 1 #1-01', '3001110001', 'Contribuyente', NULL, NULL);
+INSERT INTO Afiliado (idAfiliado, tipoDocumento, numDocumento, nombre, fechaNacimiento, direccion, telefono, tipoAfiliado, parentesco, afiliadoDependienteId) VALUES (2, 'TI', 1100110022, 'María Mendoza', TO_DATE('2005-07-10','YYYY-MM-DD'), 'Calle 1 #1-01', '3001110001', 'Beneficiario', 'Hijo', 1);
+INSERT INTO Afiliado (idAfiliado, tipoDocumento, numDocumento, nombre, fechaNacimiento, direccion, telefono, tipoAfiliado, parentesco, afiliadoDependienteId) VALUES (3, 'CC', 1100110033, 'Laura Quintero', TO_DATE('1975-08-19','YYYY-MM-DD'), 'Calle 2 #2-02', '3002220002', 'Contribuyente', NULL, NULL);
+INSERT INTO Afiliado (idAfiliado, tipoDocumento, numDocumento, nombre, fechaNacimiento, direccion, telefono, tipoAfiliado, parentesco, afiliadoDependienteId) VALUES (4, 'CC', 1100110044, 'Oscar Rojas', TO_DATE('1985-12-25','YYYY-MM-DD'), 'Calle 3 #3-03', '3003330003', 'Contribuyente', NULL, NULL);
+INSERT INTO Afiliado (idAfiliado, tipoDocumento, numDocumento, nombre, fechaNacimiento, direccion, telefono, tipoAfiliado, parentesco, afiliadoDependienteId) VALUES (5, 'TI', 1100110055, 'Sofía Rojas', TO_DATE('2010-11-11','YYYY-MM-DD'), 'Calle 3 #3-03', '3003330003', 'Beneficiario', 'Hija', 4);
+INSERT INTO Afiliado (idAfiliado, tipoDocumento, numDocumento, nombre, fechaNacimiento, direccion, telefono, tipoAfiliado, parentesco, afiliadoDependienteId) VALUES (6, 'CC', 1100110066, 'Viviana Torres', TO_DATE('1990-02-28','YYYY-MM-DD'), 'Calle 4 #4-04', '3004440004', 'Contribuyente', NULL, NULL);
+INSERT INTO Afiliado (idAfiliado, tipoDocumento, numDocumento, nombre, fechaNacimiento, direccion, telefono, tipoAfiliado, parentesco, afiliadoDependienteId) VALUES (7, 'CC', 1100110077, 'Alejandro Díaz', TO_DATE('1972-06-06','YYYY-MM-DD'), 'Calle 5 #5-05', '3005550005', 'Contribuyente', NULL, NULL);
+INSERT INTO Afiliado (idAfiliado, tipoDocumento, numDocumento, nombre, fechaNacimiento, direccion, telefono, tipoAfiliado, parentesco, afiliadoDependienteId) VALUES (8, 'CC', 1100110088, 'Camila Herrera', TO_DATE('1988-03-15','YYYY-MM-DD'), 'Calle 6 #6-06', '3006660006', 'Contribuyente', NULL, NULL);
+INSERT INTO Afiliado (idAfiliado, tipoDocumento, numDocumento, nombre, fechaNacimiento, direccion, telefono, tipoAfiliado, parentesco, afiliadoDependienteId) VALUES (9, 'TI', 1100110099, 'Mateo Herrera', TO_DATE('2012-09-20','YYYY-MM-DD'), 'Calle 6 #6-06', '3006660006', 'Beneficiario', 'Hijo', 8);
+INSERT INTO Afiliado (idAfiliado, tipoDocumento, numDocumento, nombre, fechaNacimiento, direccion, telefono, tipoAfiliado, parentesco, afiliadoDependienteId) VALUES (10, 'CC', 1100110100, 'Julián Vélez', TO_DATE('1982-04-22','YYYY-MM-DD'), 'Calle 7 #7-07', '3007770007', 'Contribuyente', NULL, NULL);
+
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (1, SYSDATE - 10, 'Completada', 'Servicio', 'Orden para examen de sangre', 1002, 1);
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (2, SYSDATE - 5, 'Vigente', 'Terapia', 'Orden para terapia física', 1008, 3);
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (3, SYSDATE - 15, 'Vencida', 'Servicio', 'Consulta con especialista en neurología', 1009, 4);
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (4, SYSDATE - 3, 'Vigente', 'Servicio', 'Orden dermatología', 1005, 6);
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (5, SYSDATE - 7, 'Completada', 'Terapia', 'Terapia física por accidente', 1008, 7);
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (6, SYSDATE - 1, 'Vigente', 'Servicio', 'Radiografía lumbar', 1003, 1);
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (7, SYSDATE - 2, 'Vigente', 'Servicio', 'Consulta psiquiatría', 1010, 8);
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (8, SYSDATE - 4, 'Completada', 'Servicio', 'Consulta pediatría', 1001, 2);
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (9, SYSDATE - 6, 'Vigente', 'Servicio', 'Examen de sangre general', 1002, 9);
+INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (10, SYSDATE - 9, 'Vencida', 'Servicio', 'Consulta ginecológica', 1004, 6);
+
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (4, 1);
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (6, 2);
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (9, 3);
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (8, 4);
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (6, 5);
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (5, 6);
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (10, 7);
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (2, 8);
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (4, 9);
+INSERT INTO Especifica (ServicioSalud_idServicio, OrdenServicio_idOrden) VALUES (2, 10);
+
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (1, SYSDATE - 9, 'Completa', 1, 1, 1002);
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (2, SYSDATE - 5, 'Ocupada', 2, 3, 1008);
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (3, SYSDATE - 12, 'Completa', 3, 4, 1009);
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (4, SYSDATE - 2, 'Ocupada', 4, 6, 1005);
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (5, SYSDATE - 6, 'Completa', 5, 7, 1008);
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (6, SYSDATE - 1, 'Disponible', 6, 1, 1003);
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (7, SYSDATE, 'Disponible', 7, 8, 1010);
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (8, SYSDATE - 3, 'Completa', 8, 2, 1001);
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (9, SYSDATE - 2, 'Disponible', 9, 9, 1002);
+INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (10, SYSDATE - 10, 'Ocupada', 10, 6, 1004);
+
+select *from cita
