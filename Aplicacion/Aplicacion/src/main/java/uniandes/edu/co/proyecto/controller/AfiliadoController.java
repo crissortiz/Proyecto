@@ -1,20 +1,16 @@
 package uniandes.edu.co.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import uniandes.edu.co.proyecto.modelo.Afiliado;
 import uniandes.edu.co.proyecto.repositorio.AfiliadoRepository;
 
 import java.util.Date;
 
-@RestController
+@Controller
 public class AfiliadoController {
 
     @Autowired
@@ -23,18 +19,17 @@ public class AfiliadoController {
     @GetMapping("/afiliados")
     public String afiliados(Model model){
         model.addAttribute("afiliados", afiliadoRepository.findAllAfiliados());
-        return model.toString(); // Aquí podrías devolver un HTML si cambias a @Controller
+        return "afiliados"; // Debes tener un archivo afiliados.html en templates
     }
 
     @GetMapping("/afiliados/new")
     public String afiliadoNew(Model model){
         model.addAttribute("afiliado", new Afiliado());
-        return "afiliado new";
+        return "afiliado_new"; // afiliado_new.html
     }
 
     @PostMapping("/afiliados/new/save")
     public String afiliadoGuardar(@ModelAttribute Afiliado afiliado) {
-        // Nota: Usa valores dummy para campos faltantes si no tienes UI aún
         afiliadoRepository.createAfiliado(
             afiliado.getIdAfiliado(),
             afiliado.getTipoDocumento(),
@@ -44,8 +39,8 @@ public class AfiliadoController {
             afiliado.getDireccion(),
             afiliado.getTelefono(),
             afiliado.getTipoAfiliado(),
-            "SinParentesco", // si no se maneja aún
-            null             // afiliadoDependienteId
+            afiliado.getParentesco(),
+            afiliado.getAfiliadoDependienteId()
         );
         return "redirect:/afiliados";
     }
@@ -55,7 +50,7 @@ public class AfiliadoController {
         Afiliado afiliado = afiliadoRepository.findAfiliadoById(idAfiliado);
         if (afiliado != null) {
             model.addAttribute("afiliado", afiliado);
-            return "afiliado edit";
+            return "afiliado_edit"; // afiliado_edit.html
         } else {
             return "redirect:/afiliados";
         }
@@ -72,8 +67,8 @@ public class AfiliadoController {
             afiliado.getDireccion(),
             afiliado.getTelefono(),
             afiliado.getTipoAfiliado(),
-            "SinParentesco",
-            null
+            afiliado.getParentesco(),
+            afiliado.getAfiliadoDependienteId()
         );
         return "redirect:/afiliados";
     }
@@ -84,3 +79,4 @@ public class AfiliadoController {
         return "redirect:/afiliados";
     }
 }
+

@@ -15,23 +15,24 @@ public class Afiliado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idAfiliado;   
+    private Integer idAfiliado;
 
-    private String nombre;         
+    private String nombre;
+
     @Temporal(TemporalType.DATE)
-    private Date fechaNacimiento;  
-    private String tipoAfiliado;  
-    private String tipoDocumento;  
-    private Integer numDocumento;   
-    private String direccion;      
-    private String telefono;       
-    private String idAfiliado1;   
+    private Date fechaNacimiento;
 
+    private String tipoAfiliado;
+    private String tipoDocumento;
+    private Integer numDocumento;
+    private String direccion;
+    private String telefono;
+    private String parentesco;
+    private Integer afiliadoDependienteId;
 
-    
-
-    public Afiliado(Integer idAfiliado, String nombre, Date fechaNacimiento, String tipoAfiliado, String tipoDocumento, Integer numDocumento, String direccion, String telefono, String idAfiliado1, Medico medico) {
-
+    public Afiliado(Integer idAfiliado, String nombre, Date fechaNacimiento, String tipoAfiliado,
+                    String tipoDocumento, Integer numDocumento, String direccion, String telefono,
+                    String parentesco, Integer afiliadoDependienteId) {
         this.idAfiliado = idAfiliado;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
@@ -40,9 +41,9 @@ public class Afiliado {
         this.numDocumento = numDocumento;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.idAfiliado1 = idAfiliado1;
+        this.parentesco = parentesco;
+        this.afiliadoDependienteId = afiliadoDependienteId;
     }
-
     public Afiliado() 
     {;}
 
@@ -109,12 +110,20 @@ public class Afiliado {
         this.telefono = telefono;
     }
 
-    public String getIdAfiliado1() {
-        return idAfiliado1;
+    public String getParentesco() {
+        return parentesco;
     }
 
-    public void setIdAfiliado1(String idAfiliado1) {
-        this.idAfiliado1 = idAfiliado1;
+    public void setParentesco(String parentesco) {
+        this.parentesco = parentesco;
+    }
+
+    public Integer getAfiliadoDependienteId() {
+        return afiliadoDependienteId;
+    }
+
+    public void setAfiliadoDependienteId(Integer afiliadoDependienteId) {
+        this.afiliadoDependienteId = afiliadoDependienteId;
     }
 
 
