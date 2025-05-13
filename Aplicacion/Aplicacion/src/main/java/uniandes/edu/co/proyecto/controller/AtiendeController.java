@@ -6,9 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import uniandes.edu.co.proyecto.modelo.Atiende;
-import uniandes.edu.co.proyecto.modelo.AtiendePK;
-import uniandes.edu.co.proyecto.modelo.Medico;
-import uniandes.edu.co.proyecto.modelo.ServicioSalud;
 import uniandes.edu.co.proyecto.repositorio.AtiendeRepository;
 import uniandes.edu.co.proyecto.repositorio.MedicoRepository;
 import uniandes.edu.co.proyecto.repositorio.ServicioSaludRepository;
