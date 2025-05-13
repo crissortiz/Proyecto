@@ -33,4 +33,17 @@ public interface CitaRepository extends JpaRepository<Cita, Integer> {
     @Transactional
     @Query(value = "DELETE FROM Cita WHERE idCita = :idCita", nativeQuery = true)
     void deleteCita(@Param("idCita") Integer idCita);
+    
+    /**RF7 */
+    /**1. Buscar slots libres de un servicio en las próximas 4 semanas */
+    @Query(value =
+        "SELECT c.* " +
+        "FROM Cita c " +
+        "JOIN Especifica e ON c.OrdenServicio_idOrden = e.OrdenServicio_idOrden " +
+        "WHERE e.ServicioSalud_idServicio = :idServicio " +
+        "  AND c.fecha BETWEEN TRUNC(SYSDATE) AND TRUNC(SYSDATE + 28) " +
+        "  AND c.estadoCita = 'Disponible'",
+        nativeQuery = true)
+    Collection<Cita> findAvailableByServicio(@Param("idServicio") Integer idServicio);
 }
+    

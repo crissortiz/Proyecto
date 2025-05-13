@@ -6,9 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 
+import java.util.Collection;
+
 import uniandes.edu.co.proyecto.modelo.Cita;
+import uniandes.edu.co.proyecto.repositorio.AfiliadoRepository;
 import uniandes.edu.co.proyecto.repositorio.CitaRepository;
 
 @RestController
@@ -16,6 +20,9 @@ public class CitaController {
 
     @Autowired
     private CitaRepository citaRepository;
+
+    @Autowired
+    private AfiliadoRepository afiliadoRepository;
 
     @GetMapping("/citas")
     public String citas(Model model) {
@@ -71,4 +78,39 @@ public class CitaController {
         citaRepository.deleteCita(id);
         return "redirect:/citas";
     }
+
+    /** RF7-1: mostrar slots disponibles para un servicio */
+    @GetMapping("/disponibles/{idServicio}")
+    public String disponibles(@PathVariable Integer idServicio, Model model) {
+        Collection<Cita> slots = citaRepository.findAvailableByServicio(idServicio);
+        model.addAttribute("slots", slots);
+        model.addAttribute("idServicio", idServicio);
+        return "citas_disponibles";   // plantilla Thymeleaf
+    }
+
+    /** RF7-2: formulario para agendar una cita concreta */
+    @GetMapping("/{idCita}/agendar")
+    public String formAgendar(@PathVariable Integer idCita, Model model) {
+        Cita cita = citaRepository.findById(idCita).orElse(null);
+        model.addAttribute("cita", cita);
+        model.addAttribute("afiliados", afiliadoRepository.findAllAfiliados());
+        // El usuario debe introducir también el idOrden al que pertenece (ya existe en cita.getOrdenServicioIdOrden)
+        return "cita_agendar";        // cita_agendar.html
+    }
+
+    /** RF7-2: acción de reserva */
+    @PostMapping("/{idCita}/agendar/save")
+    public String agendarSave(
+            @PathVariable Integer idCita,
+            @RequestParam("afiliadoId") Integer afiliadoId,
+            @RequestParam("ordenId")   Integer ordenId) {
+
+        Cita cita = citaRepository.findById(idCita).orElseThrow();
+        cita.setIdAfiliado(afiliadoId);
+        cita.setIdOrden(ordenId);
+        cita.setEstadoCita("Ocupada");
+        citaRepository.save(cita);
+        return "redirect:/citas";
+    }
+
 }
