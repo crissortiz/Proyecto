@@ -17,7 +17,7 @@ public class Cita {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idCita;    
     
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;           
     private String estadoCita;    
     private Integer idOrden;       

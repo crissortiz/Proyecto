@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 
 import java.util.Collection;
+import java.util.Date;
 
 import uniandes.edu.co.proyecto.modelo.Cita;
 import uniandes.edu.co.proyecto.repositorio.AfiliadoRepository;
@@ -42,11 +42,11 @@ public class CitaController {
     public ResponseEntity<String> guardarCita(@RequestBody Cita cita) {
         citaRepository.createCita(
             cita.getIdCita(),
-            cita.getFecha(),
+            cita.getFecha() != null ? cita.getFecha() : new Date() ,
             cita.getEstadoCita(),
-            Integer.valueOf(cita.getIdOrden()),
-            Integer.valueOf(cita.getRegistroMedico()),
-            Integer.valueOf(cita.getIdAfiliado())
+            cita.getIdOrden(),
+            cita.getRegistroMedico(),
+            cita.getIdAfiliado()
         );
         return ResponseEntity.ok("redirect:/citas");
     }
@@ -63,7 +63,7 @@ public class CitaController {
     }
 
     @PostMapping("/citas/{id}/edit/save")
-    public String guardarCitaEditada(@PathVariable("id") Integer id, @ModelAttribute Cita cita) {
+    public ResponseEntity<String> guardarCitaEditada(@PathVariable("id") Integer id, @RequestBody Cita cita) {
         citaRepository.updateCita(
             id,
             cita.getFecha(),
@@ -72,7 +72,7 @@ public class CitaController {
             Integer.valueOf(cita.getRegistroMedico()),
             Integer.valueOf(cita.getIdAfiliado())
         );
-        return "redirect:/citas";
+        return ResponseEntity.ok("redirect:/citas");
     }
 
     @GetMapping("/citas/{id}/delete")

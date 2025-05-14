@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import uniandes.edu.co.proyecto.modelo.Prestacion;
 import uniandes.edu.co.proyecto.modelo.PrestacionPK;
 import uniandes.edu.co.proyecto.repositorio.PrestacionRepository;
-import uniandes.edu.co.proyecto.repositorio.IpsRepository;
-import uniandes.edu.co.proyecto.repositorio.ServicioSaludRepository;
-import uniandes.edu.co.proyecto.repositorio.MedicoRepository;
+
 
 import java.util.Collection;
 
@@ -20,12 +18,7 @@ public class PrestacionController {
 
     @Autowired
     private PrestacionRepository prestacionRepo;
-    @Autowired
-    private IpsRepository ipsRepo;
-    @Autowired
-    private ServicioSaludRepository servicioRepo;
-    @Autowired
-    private MedicoRepository medicoRepo;
+
 
     @GetMapping("/prestacion")
     public String prestacion(Model model) {

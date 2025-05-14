@@ -584,3 +584,7 @@ WHERE
   AND TO_DATE('&fecha_fin'   ,'YYYY-MM-DD')
 ORDER BY c.fecha;
 
+ALTER TABLE cita DROP COLUMN idorden;
+
+
+select *from cita

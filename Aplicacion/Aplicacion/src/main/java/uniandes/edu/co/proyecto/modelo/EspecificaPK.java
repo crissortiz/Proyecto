@@ -22,16 +22,19 @@ public class EspecificaPK implements Serializable {
         this.idOrden = idOrden;
     }
 
+    public EspecificaPK() 
+    {;}
+
     public void setIdServicio(ServicioSalud idServicio) {
         this.idServicio = idServicio;
     }
     public void setIdOrden(OrdenServicio idOrden) {
         this.idOrden = idOrden;
     }
-    public void getIdServicio(ServicioSalud idServicio) {
-        this.idServicio = idServicio;
+    public ServicioSalud getIdServicio() {
+        return idServicio;
     }
-    public void getIdOrden(OrdenServicio idOrden) {
-        this.idOrden = idOrden;
+    public OrdenServicio getIdOrden() {
+        return idOrden;
     }
 }

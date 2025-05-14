@@ -21,13 +21,13 @@ public interface CitaRepository extends JpaRepository<Cita, Integer> {
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Medico_registroMedico, Afiliado_idAfiliado) VALUES (:idCita, :fecha, :estadoCita, :OrdenServicio_idOrden, :Medico_registroMedico, :Afiliado_idAfiliado)", nativeQuery = true)
-    void createCita(@Param("idCita") Integer idCita, @Param("fecha") Date fecha, @Param("estadoCita") String estadoCita, @Param("OrdenServicio_idOrden") Integer ordenServicioIdOrden, @Param("Medico_registroMedico") Integer medicoRegistroMedico, @Param("Afiliado_idAfiliado") Integer afiliadoIdAfiliado);
+    @Query(value = "INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (:idCita, :fecha, :estadoCita, :OrdenServicio_idOrden, :Medico_registroMedico1, :Afiliado_idAfiliado)", nativeQuery = true)
+    void createCita(@Param("idCita") Integer idCita, @Param("fecha") Date fecha, @Param("estadoCita") String estadoCita, @Param("OrdenServicio_idOrden") Integer ordenServicioIdOrden, @Param("Medico_registroMedico1") Integer medicoRegistroMedico1, @Param("Afiliado_idAfiliado") Integer afiliadoIdAfiliado);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE Cita SET fecha = :fecha, estadoCita = :estadoCita, OrdenServicio_idOrden = :OrdenServicio_idOrden, Medico_registroMedico = :Medico_registroMedico, Afiliado_idAfiliado = :Afiliado_idAfiliado WHERE idCita = :idCita", nativeQuery = true)
-    void updateCita(@Param("idCita") Integer idCita, @Param("fecha") Date fecha, @Param("estadoCita") String estadoCita, @Param("OrdenServicio_idOrden") Integer ordenServicioIdOrden, @Param("Medico_registroMedico") Integer medicoRegistroMedico, @Param("Afiliado_idAfiliado") Integer afiliadoIdAfiliado);
+    @Query(value = "UPDATE Cita SET fecha = :fecha, estadoCita = :estadoCita, OrdenServicio_idOrden = :OrdenServicio_idOrden, Medico_registroMedico1 = :Medico_registroMedico1, Afiliado_idAfiliado = :Afiliado_idAfiliado WHERE idCita = :idCita", nativeQuery = true)
+    void updateCita(@Param("idCita") Integer idCita, @Param("fecha") Date fecha, @Param("estadoCita") String estadoCita, @Param("OrdenServicio_idOrden") Integer ordenServicioIdOrden, @Param("Medico_registroMedico1") Integer medicoRegistroMedico1, @Param("Afiliado_idAfiliado") Integer afiliadoIdAfiliado);
 
     @Modifying
     @Transactional

@@ -1,7 +1,6 @@
 package uniandes.edu.co.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,10 +9,11 @@ import uniandes.edu.co.proyecto.repositorio.EspecificaRepository;
 import uniandes.edu.co.proyecto.repositorio.ServicioSaludRepository;
 import uniandes.edu.co.proyecto.repositorio.OrdenServicioRepository;
 
-import java.util.Collection;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.ResponseEntity;
 
-@Controller
-@RequestMapping("/especifica")
+
+@RestController
 public class EspecificaController {
 
     @Autowired
@@ -24,14 +24,13 @@ public class EspecificaController {
     private OrdenServicioRepository ordenRepo;
 
     /** 1. Listar todas las asignaciones Servicio↔Orden */
-    @GetMapping
-    public String list(Model model) {
-        Collection<Especifica> lista = especificaRepo.findAllEspecifica();
-        model.addAttribute("especificaList", lista);
-        return "especifica";         // especifica.html
-    }
+    @GetMapping("/especifica")
+    public String especifica(Model model){
+        model.addAttribute("especifica", especificaRepo.findAllEspecifica());
+        return model.toString(); // especifica.html
+    }         //
+    
 
-    /** 2. Formulario para nueva asignación */
     @GetMapping("/new")
     public String formNew(Model model) {
         model.addAttribute("especifica", new Especifica());
@@ -41,11 +40,13 @@ public class EspecificaController {
     }
 
     /** 3. Guardar la nueva asignación */
-    @PostMapping("/new/save")
-    public String saveNew(@RequestParam("idServicio") Integer idServicio,
-                          @RequestParam("idOrden")   Integer idOrden) {
-        especificaRepo.createEspecifica(idServicio, idOrden);
-        return "redirect:/especifica";
+    @PostMapping("/especifica/new/save")
+    public ResponseEntity<String> guardarEspecifica(@RequestBody Especifica especifica) {
+        especificaRepo.createEspecifica(
+            especifica.getPk().getIdServicio().getIdServicio(),
+            especifica.getPk().getIdOrden().getIdOrden()
+        );
+        return ResponseEntity.ok("redirect:/especifica");
     }
 
     /** 4. Eliminar una asignación */
