@@ -15,15 +15,17 @@ public class ServicioSalud {
     private Integer idServicio;  
 
     private String nombre;       
+    private String descripcion; 
     private String tipoServicio; 
     private boolean requiereOrden;
-    private String descripcion; 
 
     
 
-    public ServicioSalud(Integer idServicio, String tipoServicio, boolean requiereOrden, String descripcion) {
+    public ServicioSalud(Integer idServicio, String nombre,  String descripcion, String tipoServicio, boolean requiereOrden) {
  
         this.idServicio = idServicio;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
         this.tipoServicio = tipoServicio;
         this.requiereOrden = requiereOrden;
         this.descripcion = descripcion;
@@ -48,6 +50,14 @@ public class ServicioSalud {
         this.nombre = nombre;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public String getTipoServicio() {
         return tipoServicio;
     }
@@ -64,11 +74,10 @@ public class ServicioSalud {
         this.requiereOrden = requiereOrden;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+    @Override
+    public String toString() {
+        return String.format("%-15s | %-15s | %-20s | %-15s | %-30s",
+                idServicio, nombre, descripcion, tipoServicio, requiereOrden);}
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+
 }

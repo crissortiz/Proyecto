@@ -21,8 +21,8 @@ public interface OrdenServicioRepository extends JpaRepository<OrdenServicio, In
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Afiliado_idAfiliado, Medico_registroMedico) VALUES (:idOrden, :fecha, :estadoOrden, :tipoOrden, :descripcion, :Afiliado_idAfiliado, :Medico_registroMedico)", nativeQuery = true)
-    void createOrdenServicio(@Param("idOrden") Integer idOrden, @Param("fecha") Date fecha, @Param("estadoOrden") String estadoOrden, @Param("tipoOrden") String tipoOrden, @Param("descripcion") String descripcion, @Param("Afiliado_idAfiliado") Integer afiliadoIdAfiliado, @Param("Medico_registroMedico") Integer medicoRegistroMedico);
+    @Query(value = "INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (:idOrden, :fecha, :estadoOrden, :tipoOrden, :descripcion, :Medico_registroMedico1, :Afiliado_idAfiliado)", nativeQuery = true)
+    void createOrdenServicio(@Param("idOrden") Integer idOrden, @Param("fecha") Date fecha, @Param("estadoOrden") String estadoOrden, @Param("tipoOrden") String tipoOrden, @Param("descripcion") String descripcion, @Param("Medico_registroMedico1") Integer medicoRegistroMedico1, @Param("Afiliado_idAfiliado") Integer afiliadoIdAfiliado);
 
     @Modifying
     @Transactional

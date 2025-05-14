@@ -20,7 +20,7 @@ public interface AfiliadoRepository extends JpaRepository<Afiliado, Integer> {
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO Afiliado (idAfiliado, tipoDocumento, numDocumento, nombre, fechaNacimiento, direccion, telefono, tipoAfiliado, parentesco, afiliadoDependienteId) VALUES (:idAfiliado, :tipoDocumento, :numDocumento, :nombre, :fechaNacimiento, :direccion, :telefono, :tipoAfiliado, :parentesco, :afiliadoDependienteId)", nativeQuery = true)
-    void createAfiliado(@Param("idAfiliado") Integer idAfiliado, @Param("tipoDocumento") String tipoDocumento, @Param("numDocumento") Integer numDocumento, @Param("nombre") String nombre, @Param("fechaNacimiento") Date fechaNacimiento, @Param("direccion") String direccion, @Param("telefono") String telefono, @Param("tipoAfiliado") String tipoAfiliado, @Param("parentesco") String parentesco, @Param("afiliadoDependienteId") Integer afiliadoDependienteId);
+    void createAfiliado(@Param("idAfiliado") Integer idAfiliado,  @Param("tipoDocumento") String tipoDocumento, @Param("numDocumento") Integer numDocumento,  @Param("nombre") String nombre, @Param("fechaNacimiento") Date fechaNacimiento, @Param("direccion") String direccion, @Param("telefono") String telefono, @Param("tipoAfiliado") String tipoAfiliado, @Param("parentesco") String parentesco, @Param("afiliadoDependienteId") Integer afiliadoDependienteId);
 
     @Modifying
     @Transactional

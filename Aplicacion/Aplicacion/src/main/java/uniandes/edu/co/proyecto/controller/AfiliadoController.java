@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,20 +30,21 @@ public class AfiliadoController {
     }
 
     @PostMapping("/afiliados/new/save")
-    public String afiliadoGuardar(@ModelAttribute Afiliado afiliado) {
+    public ResponseEntity<String> afiliadoGuardar(@RequestBody Afiliado afiliado) {
+        System.out.println(afiliado.toString());
         afiliadoRepository.createAfiliado(
             afiliado.getIdAfiliado(),
-            afiliado.getTipoDocumento(),
+            afiliado.getTipoDocumento() != null ? afiliado.getTipoDocumento().toString() : null,
             afiliado.getNumDocumento(),
             afiliado.getNombre(),
             afiliado.getFechaNacimiento() != null ? afiliado.getFechaNacimiento() : new Date(),
             afiliado.getDireccion(),
             afiliado.getTelefono(),
-            afiliado.getTipoAfiliado(),
+            afiliado.getTipoAfiliado() != null ? afiliado.getTipoAfiliado().toString() : null,         
             afiliado.getParentesco(),
             afiliado.getAfiliadoDependienteId()
         );
-        return "redirect:/afiliados";
+        return ResponseEntity.ok("redirect:/afiliados");
     }
 
     @GetMapping("/afiliados/{id}/edit")

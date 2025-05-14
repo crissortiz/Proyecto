@@ -1,11 +1,13 @@
 package uniandes.edu.co.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.ui.Model;
 
 import uniandes.edu.co.proyecto.modelo.Medico;
@@ -30,15 +32,15 @@ public class MedicoController {
     }
 
     @PostMapping("/medicos/new/save")
-    public String guardarMedico(@ModelAttribute Medico medico) {
+    public ResponseEntity<String> guardarMedico(@RequestBody Medico medico) {
         medicoRepository.createMedico(
-            medico.getRegistroMedico(),
+            medico.getRegistroMedico() != null ? medico.getRegistroMedico(): null, 
             medico.getNombre(),
             medico.getTipoDocumento(),
             medico.getNumDocumento(),
             medico.getEspecialidad()
         );
-        return "redirect:/medicos";
+        return ResponseEntity.ok("redirect:/medicos");
     }
 
     @GetMapping("/medicos/{id}/edit")

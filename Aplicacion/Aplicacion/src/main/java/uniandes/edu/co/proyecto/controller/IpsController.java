@@ -1,11 +1,12 @@
 package uniandes.edu.co.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.stereotype.Controller;
 
 
@@ -32,10 +33,14 @@ public class IpsController {
         return "ips new";
     }
 
-    @PostMapping("/ips/new/save")
-    public String ipsGuardar(@ModelAttribute Ips ips) {
-        ipsRepository.CreateIps(ips.getNit(), ips.getNombre(), ips.getDireccion(), ips.getTelefono());
-        return "redirect:/ipss";
+    @PostMapping("/ipss/new/save")
+    public ResponseEntity<String> ipsGuardar(@RequestBody Ips ips) {
+        ipsRepository.CreateIps(
+            ips.getNit(), 
+            ips.getNombre(), 
+            ips.getDireccion(), 
+            ips.getTelefono());
+        return ResponseEntity.ok("redirect:/ipss");
     }
 
     @GetMapping("/ipss/{nit}/edit")

@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,16 +28,15 @@ public class ServicioSaludController {
     }
 
     @PostMapping("/serviciosSalud/new/save")
-    public String guardarNuevoServicioSalud(
-        @RequestParam("idServicio") Integer idServicio,
-        @RequestParam("nombre") String nombre,
-        @RequestParam("descripcion") String descripcion,
-        @RequestParam("tipoServicio") String tipoServicio,
-        @RequestParam(value = "requiereOrden", defaultValue = "false") boolean requiereOrden) {
-
-        Character requiereOrdenChar = requiereOrden ? '1' : '0';
-        servicioSaludRepository.createServicioSalud(idServicio, nombre, descripcion, tipoServicio, requiereOrdenChar);
-        return "redirect:/serviciosSalud";
+    public ResponseEntity<String> guardarNuevoServicioSalud(@RequestBody ServicioSalud servicioSalud) {
+        servicioSaludRepository.createServicioSalud(
+            servicioSalud.getIdServicio(),
+            servicioSalud.getNombre(),
+            servicioSalud.getDescripcion(),
+            servicioSalud.getTipoServicio(),
+            servicioSalud.isRequiereOrden() ? '1' : '0'
+        );
+        return ResponseEntity.ok("redirect:/serviciosSalud");
     }
 
     @GetMapping("/serviciosSalud/{id}/edit")

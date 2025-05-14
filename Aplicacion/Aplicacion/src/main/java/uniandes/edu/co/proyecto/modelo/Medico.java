@@ -80,14 +80,10 @@ public class Medico {
     }
 
     @Override
-public String toString() {
-    return "Medico{" +
-            "registroMedico=" + registroMedico +
-            ", nombre='" + nombre + '\'' +
-            ", tipoDocumento='" + tipoDocumento + '\'' +
-            ", numDocumento=" + numDocumento +
-            ", especialidad='" + especialidad + '\'' +
-            '}';
-}
+    public String toString() {
+        return String.format("%-15s | %-15s | %-20s | %-15s | %-30s | %-15s | %-15s | %-15s",
+                registroMedico, nombre, tipoDocumento, numDocumento, especialidad);}
+
+
 
 }

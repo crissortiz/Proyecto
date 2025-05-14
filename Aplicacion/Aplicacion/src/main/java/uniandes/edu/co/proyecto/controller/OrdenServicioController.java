@@ -2,6 +2,7 @@ package uniandes.edu.co.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,17 +31,17 @@ public class OrdenServicioController {
     }
 
     @PostMapping("/ordenesServicio/new/save")
-    public String guardarNuevaOrdenServicio(
-        @RequestParam("idOrden") Integer idOrden,
-        @RequestParam("fecha") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha,
-        @RequestParam("estadoOrden") String estadoOrden,
-        @RequestParam("tipoOrden") String tipoOrden,
-        @RequestParam("descripcion") String descripcion,
-        @RequestParam("idAfiliado") Integer idAfiliado,
-        @RequestParam("registroMedico") Integer registroMedico) {
-
-        ordenServicioRepository.createOrdenServicio(idOrden, fecha, estadoOrden, tipoOrden, descripcion, idAfiliado, registroMedico);
-        return "redirect:/ordenesServicio";
+    public ResponseEntity<String> guardarNuevaOrdenServicio(@RequestBody OrdenServicio ordenServicio) {
+        ordenServicioRepository.createOrdenServicio(
+            ordenServicio.getIdOrden(),
+            ordenServicio.getFecha() != null ? ordenServicio.getFecha() : new Date(),
+            ordenServicio.getEstadoOrden(),
+            ordenServicio.getTipoOrden(),
+            ordenServicio.getDescripcion(),
+            ordenServicio.getRegistroMedico(),
+            ordenServicio.getIdAfiliado()
+        );
+        return ResponseEntity.ok("redirect:/ordenesServicio");
     }
 
     @GetMapping("/ordenesServicio/{id}/edit")

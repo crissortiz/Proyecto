@@ -18,8 +18,8 @@ public interface PrestacionRepository extends JpaRepository<Prestacion, Prestaci
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO Prestacion (IPS_nit, ServicioSalud_idServicio, Medico_registroMedico) VALUES (:nit, :idServicio, :registroMedico)", nativeQuery = true)
-    void createPrestacion(@Param("nit") String nit, @Param("idServicio") Integer idServicio, @Param("registroMedico") Integer registroMedico);
+    @Query(value = "INSERT INTO Prestacion (IPS_nit, ServicioSalud_idServicio) VALUES (:nit, :idServicio)", nativeQuery = true)
+    void createPrestacion(@Param("nit") String nit, @Param("idServicio") Integer idServicio);
 
     @Modifying
     @Transactional

@@ -1,5 +1,6 @@
 package uniandes.edu.co.proyecto.modelo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,13 +16,13 @@ public class Afiliado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "IDAFILIADO")
     private Integer idAfiliado;
 
     private String nombre;
 
     @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
-
     private String tipoAfiliado;
     private String tipoDocumento;
     private Integer numDocumento;
@@ -125,6 +126,11 @@ public class Afiliado {
     public void setAfiliadoDependienteId(Integer afiliadoDependienteId) {
         this.afiliadoDependienteId = afiliadoDependienteId;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%-15s | %-15s | %-20s | %-15s | %-30s | %-15s | %-15s | %-15s",
+                idAfiliado, tipoDocumento, numDocumento, nombre, fechaNacimiento, direccion, telefono, tipoAfiliado, parentesco, afiliadoDependienteId);}
 
 
 }

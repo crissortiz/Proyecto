@@ -20,11 +20,11 @@ public class Cita {
     @Temporal(TemporalType.DATE)
     private Date fecha;           
     private String estadoCita;    
-    private String idOrden;       
-    private String idAfiliado;    
-    private String registroMedico; 
+    private Integer idOrden;       
+    private Integer idAfiliado;    
+    private Integer registroMedico; 
 
-    public Cita(Integer idCita, Date fecha, String estadoCita, String idOrden, String idAfiliado, String registroMedico) {
+    public Cita(Integer idCita, Date fecha, String estadoCita, Integer idOrden, Integer idAfiliado, Integer registroMedico) {
         
         this.idCita = idCita;
         this.fecha = fecha;
@@ -60,27 +60,27 @@ public class Cita {
         this.estadoCita = estadoCita;
     }
 
-    public String getIdOrden() {
+    public Integer getIdOrden() {
         return idOrden;
     }
 
-    public void setIdOrden(String idOrden) {
+    public void setIdOrden(Integer idOrden) {
         this.idOrden = idOrden;
     }
 
-    public String getIdAfiliado() {
+    public Integer getIdAfiliado() {
         return idAfiliado;
     }
 
-    public void setIdAfiliado(String idAfiliado) {
+    public void setIdAfiliado(Integer idAfiliado) {
         this.idAfiliado = idAfiliado;
     }
 
-    public String getRegistroMedico() {
+    public Integer getRegistroMedico() {
         return registroMedico;
     }
 
-    public void setRegistroMedico(String registroMedico) {
+    public void setRegistroMedico(Integer registroMedico) {
         this.registroMedico = registroMedico;
     }
 }

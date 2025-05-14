@@ -9,7 +9,6 @@ import jakarta.persistence.Table;
 public class Ips {
 
     @Id
-    @Column(name = "nit")
     private String nit;
 
     private String nombre;
@@ -50,6 +49,12 @@ public class Ips {
     }
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    @Override
+    public String toString(){
+        return String.format("%-15s | %-15s | %-20s | %-15s",
+                nit, nombre, direccion, telefono);
     }
     
 }

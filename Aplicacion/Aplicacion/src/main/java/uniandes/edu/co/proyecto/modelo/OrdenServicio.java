@@ -22,13 +22,12 @@ public class OrdenServicio {
     private String estadoOrden;   
     private String tipoOrden;     
     private String descripcion;   
-    private String registroMedico; 
-    private String idServicio;    
-    private String idAfiliado;
+    private Integer registroMedico; 
+    private Integer idAfiliado;
 
     
 
-    public OrdenServicio(Integer idOrden, Date fecha, String estadoOrden, String tipoOrden, String descripcion, String registroMedico, String idServicio, String idAfiliado) {
+    public OrdenServicio(Integer idOrden, Date fecha, String estadoOrden, String tipoOrden, String descripcion, Integer registroMedico, Integer idAfiliado) {
         
         this.idOrden = idOrden;
         this.fecha = fecha;
@@ -36,7 +35,6 @@ public class OrdenServicio {
         this.tipoOrden = tipoOrden;
         this.descripcion = descripcion;
         this.registroMedico = registroMedico;
-        this.idServicio = idServicio;
         this.idAfiliado = idAfiliado;
     }
 
@@ -83,27 +81,19 @@ public class OrdenServicio {
         this.descripcion = descripcion;
     }
 
-    public String getRegistroMedico() {
+    public Integer getRegistroMedico() {
         return registroMedico;
     }
 
-    public void setRegistroMedico(String registroMedico) {
+    public void setRegistroMedico(Integer registroMedico) {
         this.registroMedico = registroMedico;
     }
 
-    public String getIdServicio() {
-        return idServicio;
-    }
-
-    public void setIdServicio(String idServicio) {
-        this.idServicio = idServicio;
-    }
-
-    public String getIdAfiliado() {
+    public Integer getIdAfiliado() {
         return idAfiliado;
     }
 
-    public void setIdAfiliado(String idAfiliado) {
+    public void setIdAfiliado(Integer idAfiliado) {
         this.idAfiliado = idAfiliado;
     }
 }
