@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
+import uniandes.edu.co.proyecto.dto.CitaDisponibleDTO;
 import uniandes.edu.co.proyecto.modelo.Cita;
-import uniandes.edu.co.proyecto.repositorio.AfiliadoRepository;
 import uniandes.edu.co.proyecto.repositorio.CitaRepository;
 
 @RestController
@@ -23,8 +24,6 @@ public class CitaController {
     @Autowired
     private CitaRepository citaRepository;
 
-    @Autowired
-    private AfiliadoRepository afiliadoRepository;
 
     @GetMapping("/citas")
     public String citas(Model model) {
@@ -81,38 +80,16 @@ public class CitaController {
         return "redirect:/citas";
     }
 
-    /** RF7-1: mostrar slots disponibles para un servicio */
-    @GetMapping("/disponibles/{idServicio}")
-    public String disponibles(@PathVariable Integer idServicio, Model model) {
-        Collection<Cita> slots = citaRepository.findAvailableByServicio(idServicio);
-        model.addAttribute("slots", slots);
-        model.addAttribute("idServicio", idServicio);
-        return "citas_disponibles";   // plantilla Thymeleaf
+    @GetMapping("/citas/{idServicio}/disponibles")
+   public ResponseEntity<List<CitaDisponibleDTO>> getDisponibilidad(@RequestParam Integer servicioId) {
+        List<CitaDisponibleDTO> disponibilidad = citaRepository.findDisponibilidadPorServicio(servicioId);
+        return new ResponseEntity<>(disponibilidad, HttpStatus.OK);
     }
 
-    /** RF7-2: formulario para agendar una cita concreta */
-    @GetMapping("/{idCita}/agendar")
-    public String formAgendar(@PathVariable Integer idCita, Model model) {
-        Cita cita = citaRepository.findById(idCita).orElse(null);
-        model.addAttribute("cita", cita);
-        model.addAttribute("afiliados", afiliadoRepository.findAllAfiliados());
-        // El usuario debe introducir también el idOrden al que pertenece (ya existe en cita.getOrdenServicioIdOrden)
-        return "cita_agendar";        // cita_agendar.html
-    }
 
-    /** RF7-2: acción de reserva */
-    @PostMapping("/{idCita}/agendar/save")
-    public String agendarSave(
-            @PathVariable Integer idCita,
-            @RequestParam("afiliadoId") Integer afiliadoId,
-            @RequestParam("ordenId")   Integer ordenId) {
-
-        Cita cita = citaRepository.findById(idCita).orElseThrow();
-        cita.setIdAfiliado(afiliadoId);
-        cita.setIdOrden(ordenId);
-        cita.setEstadoCita("Ocupada");
-        citaRepository.save(cita);
-        return "redirect:/citas";
-    }
+    @GetMapping("/citas/test/{valor}")
+public ResponseEntity<String> testPathVariable(@PathVariable String valor) {
+    return new ResponseEntity<>("El valor es: " + valor, HttpStatus.OK);
+}
 
 }

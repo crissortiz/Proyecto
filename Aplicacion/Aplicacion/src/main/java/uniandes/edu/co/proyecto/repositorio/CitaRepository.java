@@ -1,5 +1,6 @@
 package uniandes.edu.co.proyecto.repositorio;
 
+import uniandes.edu.co.proyecto.dto.CitaDisponibleDTO;
 import uniandes.edu.co.proyecto.modelo.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -8,6 +9,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.Collection;
 import java.util.Date;
+
+import java.util.List;
 
 public interface CitaRepository extends JpaRepository<Cita, Integer> {
     @Query(value = "SELECT * FROM Cita", nativeQuery = true)
@@ -36,14 +39,31 @@ public interface CitaRepository extends JpaRepository<Cita, Integer> {
     
     /**RF7 */
     /**1. Buscar slots libres de un servicio en las próximas 4 semanas */
-    @Query(value =
-        "SELECT c.* " +
-        "FROM Cita c " +
-        "JOIN Especifica e ON c.OrdenServicio_idOrden = e.OrdenServicio_idOrden " +
-        "WHERE e.ServicioSalud_idServicio = :idServicio " +
-        "  AND c.fecha BETWEEN TRUNC(SYSDATE) AND TRUNC(SYSDATE + 28) " +
-        "  AND c.estadoCita = 'Disponible'",
-        nativeQuery = true)
-    Collection<Cita> findAvailableByServicio(@Param("idServicio") Integer idServicio);
+    @Query(value = """
+    SELECT
+        ss.nombre AS servicio,
+        c.fecha AS fechaHora,
+        ip.nombre AS ipsOfrece,
+        m.nombre AS medico
+    FROM Cita c
+    JOIN OrdenServicio os
+        ON c.OrdenServicio_idOrden = os.idOrden
+    JOIN ServicioSalud ss
+        ON os.servicioSalud_idServicio = ss.idServicio
+    JOIN Prestacion p
+        ON ss.idServicio = p.ServicioSalud_idServicio
+    JOIN IPS ip
+        ON p.IPS_nit = ip.nit
+    JOIN Medico m
+        ON c.Medico_registroMedico1 = m.registroMedico
+    WHERE ss.idServicio = :servicioId
+      AND c.estadoCita = 'Disponible'
+      AND c.fecha BETWEEN TRUNC(SYSDATE) AND TRUNC(SYSDATE) + 28
+    ORDER BY c.fecha
+    """, nativeQuery = true)
+    List<CitaDisponibleDTO> findDisponibilidadPorServicio(@Param("servicioId") Integer servicioId);
+
 }
+
+
     

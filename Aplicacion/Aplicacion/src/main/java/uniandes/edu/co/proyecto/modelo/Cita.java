@@ -1,5 +1,6 @@
 package uniandes.edu.co.proyecto.modelo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +21,7 @@ public class Cita {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;           
     private String estadoCita;    
+    @Column(name = "OrdenServicio_idOrden")
     private Integer idOrden;       
     private Integer idAfiliado;    
     private Integer registroMedico; 
