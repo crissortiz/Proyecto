@@ -471,122 +471,171 @@ INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idA
 INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (19, SYSDATE + 22, 'Disponible', 19,  9, 1010);
 INSERT INTO Cita (idCita, fecha, estadoCita, OrdenServicio_idOrden, Afiliado_idAfiliado, Medico_registroMedico1) VALUES (20, SYSDATE + 25, 'Disponible', 20, 10, 1007);
 
--- RFC1:
-
-SELECT 
-  ss.nombre   AS servicio,
-  c.fecha     AS fecha_hora,
-  ips.nombre  AS ips,
-  m.nombre    AS medico
-FROM Cita c
-  JOIN Especifica e 
-    ON e.OrdenServicio_idOrden = c.OrdenServicio_idOrden
-  JOIN ServicioSalud ss 
-    ON ss.idServicio = e.ServicioSalud_idServicio
-  JOIN Trabajo t 
-    ON t.Medico_registroMedico1 = c.Medico_registroMedico1
-  JOIN IPS ips 
-    ON ips.nit = t.IPS_nit
-  JOIN Medico m 
-    ON m.registroMedico = c.Medico_registroMedico1
-WHERE 
-  e.ServicioSalud_idServicio = &servicio_id  
-  AND c.estadoCita             = 'Disponible'
-  AND c.fecha BETWEEN SYSDATE AND SYSDATE+28
-ORDER BY c.fecha;
-
--- RFC2: Mostrar los 20 servicios más solicitados en un período dado
-
-SELECT 
-  ss.idServicio,
-  ss.nombre,
-  COUNT(*) AS total_solicitudes
-FROM Cita c
-JOIN Especifica e
-  ON c.OrdenServicio_idOrden = e.OrdenServicio_idOrden
-JOIN ServicioSalud ss
-  ON ss.idServicio = e.ServicioSalud_idServicio
-WHERE c.fecha 
-  BETWEEN TO_DATE('&fecha_inicio','YYYY-MM-DD') 
-      AND TO_DATE('&fecha_fin'   ,'YYYY-MM-DD')
-GROUP BY ss.idServicio, ss.nombre
-ORDER BY total_solicitudes DESC
-FETCH FIRST 20 ROWS ONLY;
-
--- RFC3: Índice de uso de cada servicio en un período dado
-
-VAR fecha_inicio VARCHAR2(10);
-VAR fecha_fin    VARCHAR2(10);
-
--- Puedes obviar estas dos líneas si prefieres sólo &fecha_inicio/&fecha_fin
-EXEC :fecha_inicio := '&fecha_inicio';
-EXEC :fecha_fin    := '&fecha_fin';
-
-WITH
-  disponibles AS (
-    SELECT 
-      p.ServicioSalud_idServicio AS idServicio,
-      COUNT(*)                  AS cnt_disp
-    FROM Prestacion p
-    GROUP BY p.ServicioSalud_idServicio
-  ),
-  usados AS (
-    SELECT 
-      e.ServicioSalud_idServicio AS idServicio,
-      COUNT(*)                  AS cnt_usados
-    FROM Cita c
-    JOIN Especifica e 
-      ON c.OrdenServicio_idOrden = e.OrdenServicio_idOrden
-    WHERE c.estadoCita = 'Completa'
-      AND c.fecha BETWEEN 
-          TO_DATE(:fecha_inicio,'YYYY-MM-DD') 
-      AND TO_DATE(:fecha_fin   ,'YYYY-MM-DD')
-    GROUP BY e.ServicioSalud_idServicio
-  )
-SELECT
-  ss.idServicio,
-  ss.nombre,
-  NVL(d.cnt_disp, 0)   AS disponibles,
-  NVL(u.cnt_usados, 0) AS usados,
-  CASE 
-    WHEN NVL(u.cnt_usados, 0) = 0 THEN NULL
-    ELSE ROUND(d.cnt_disp / u.cnt_usados, 2)
-  END AS indice_uso
-FROM ServicioSalud ss
-LEFT JOIN disponibles d 
-  ON d.idServicio = ss.idServicio
-LEFT JOIN usados u 
-  ON u.idServicio = ss.idServicio
-ORDER BY ss.idServicio;
-
--- RFC4: Utilización de servicios de un afiliado en un rango de fechas
-
-SELECT
-  ss.nombre    AS servicio,
-  c.fecha      AS fecha_tomado,
-  m.nombre     AS medico,
-  ips.nombre   AS ips
-FROM Cita c
-JOIN Especifica e 
-  ON e.OrdenServicio_idOrden = c.OrdenServicio_idOrden
-JOIN ServicioSalud ss 
-  ON ss.idServicio = e.ServicioSalud_idServicio
-JOIN Trabajo t 
-  ON t.Medico_registroMedico1 = c.Medico_registroMedico1
-JOIN IPS ips      
-  ON ips.nit = t.IPS_nit
-JOIN Medico m    
-  ON m.registroMedico = c.Medico_registroMedico1
-WHERE
-  c.Afiliado_idAfiliado = &afiliado_id
-  AND c.fecha BETWEEN 
-      TO_DATE('&fecha_inicio','YYYY-MM-DD') 
-  AND TO_DATE('&fecha_fin'   ,'YYYY-MM-DD')
-ORDER BY c.fecha;
 
 ALTER TABLE cita DROP COLUMN idorden;
 
 
 //Eliminacion de relaciones sin sentido
-DROP TABLE especifica
-DROP Table atiende
+DROP TABLE especifica;
+DROP Table atiende;
+
+//Modificaciones a tablas
+
+
+AlTER TABLE ordenServicio ADD servicioSalud_idServicio INTEGER
+
+
+-- Poblar servicioSalud_idServicio en OrdenServicio
+UPDATE OrdenServicio SET servicioSalud_idServicio = 4  WHERE idOrden = 1;
+UPDATE OrdenServicio SET servicioSalud_idServicio = 6  WHERE idOrden = 2;
+UPDATE OrdenServicio SET servicioSalud_idServicio = 9  WHERE idOrden = 3;
+UPDATE OrdenServicio SET servicioSalud_idServicio = 8  WHERE idOrden = 4;
+UPDATE OrdenServicio SET servicioSalud_idServicio = 6  WHERE idOrden = 5;
+UPDATE OrdenServicio SET servicioSalud_idServicio = 5  WHERE idOrden = 6;
+UPDATE OrdenServicio SET servicioSalud_idServicio = 10 WHERE idOrden = 7;
+UPDATE OrdenServicio SET servicioSalud_idServicio = 2  WHERE idOrden = 8;
+UPDATE OrdenServicio SET servicioSalud_idServicio = 4  WHERE idOrden = 9;
+UPDATE OrdenServicio SET servicioSalud_idServicio = 2  WHERE idOrden = 10;
+
+UPDATE OrdenServicio SET servicioSalud_idServicio = 1  WHERE idOrden = 11;
+UPDATE OrdenServicio SET servicioSalud_idServicio = 2  WHERE idOrden = 12;
+UPDATE OrdenServicio SET servicioSalud_idServicio = 6  WHERE idOrden = 13;
+UPDATE OrdenServicio SET servicioSalud_idServicio = 4  WHERE idOrden = 14;
+UPDATE OrdenServicio SET servicioSalud_idServicio = 5  WHERE idOrden = 15;
+UPDATE OrdenServicio SET servicioSalud_idServicio = 8  WHERE idOrden = 16;
+UPDATE OrdenServicio SET servicioSalud_idServicio = 6  WHERE idOrden = 17;
+UPDATE OrdenServicio SET servicioSalud_idServicio = 9  WHERE idOrden = 18;
+UPDATE OrdenServicio SET servicioSalud_idServicio = 10 WHERE idOrden = 19;
+UPDATE OrdenServicio SET servicioSalud_idServicio = 7  WHERE idOrden = 20;
+
+//Nuevos RFC's
+
+//RFC1
+-- Variables de sustitución en SQL Developer:
+DEFINE servicio_id = &servicio_id
+
+SELECT
+  ss.nombre               AS servicio,
+  c.fecha                 AS fecha_hora,
+  ip.nombre               AS ips_ofrece,
+  m.nombre                AS medico
+FROM Cita c
+JOIN OrdenServicio os
+  ON c.OrdenServicio_idOrden = os.idOrden
+JOIN ServicioSalud ss
+  ON os.servicioSalud_idServicio = ss.idServicio
+JOIN Prestacion p
+  ON ss.idServicio = p.ServicioSalud_idServicio
+JOIN IPS ip
+  ON p.IPS_nit = ip.nit
+JOIN Medico m
+  ON c.Medico_registroMedico1 = m.registroMedico
+WHERE ss.idServicio   = &servicio_id
+  AND c.estadoCita    = 'Disponible'
+  AND c.fecha BETWEEN TRUNC(SYSDATE)
+                  AND TRUNC(SYSDATE) + 28
+ORDER BY c.fecha;
+
+
+//RFC2
+DEFINE fecha_inicio = &fecha_inicio
+DEFINE fecha_fin   = &fecha_fin
+
+SELECT *
+FROM (
+  SELECT
+    ss.idServicio,
+    ss.nombre            AS servicio,
+    COUNT(*)             AS total_solicitudes
+  FROM Cita c
+  JOIN OrdenServicio os
+    ON c.OrdenServicio_idOrden = os.idOrden
+  JOIN ServicioSalud ss
+    ON os.servicioSalud_idServicio = ss.idServicio
+  WHERE c.fecha BETWEEN TO_DATE('&fecha_inicio','YYYY-MM-DD')
+                  AND TO_DATE('&fecha_fin'   ,'YYYY-MM-DD')
+    AND c.estadoCita IN ('Completa','Ocupada')
+  GROUP BY ss.idServicio, ss.nombre
+  ORDER BY COUNT(*) DESC
+)
+WHERE ROWNUM <= 20;
+
+
+//RFC3
+DEFINE fecha_inicio = &fecha_inicio
+DEFINE fecha_fin   = &fecha_fin
+
+WITH
+  cnt_disp AS (
+    SELECT
+      p.ServicioSalud_idServicio AS idServicio,
+      COUNT(*)                   AS disponibles
+    FROM Prestacion p
+    GROUP BY p.ServicioSalud_idServicio
+  ),
+  cnt_usados AS (
+    SELECT
+      os.servicioSalud_idServicio AS idServicio,
+      COUNT(*)                   AS usados
+    FROM Cita c
+    JOIN OrdenServicio os
+      ON c.OrdenServicio_idOrden = os.idOrden
+    WHERE c.estadoCita = 'Completa'
+      AND c.fecha BETWEEN TO_DATE('&fecha_inicio','YYYY-MM-DD')
+                     AND TO_DATE('&fecha_fin'   ,'YYYY-MM-DD')
+    GROUP BY os.servicioSalud_idServicio
+  )
+SELECT
+  ss.idServicio,
+  ss.nombre,
+  NVL(d.disponibles,0)  AS total_disponibles,
+  NVL(u.usados,0)       AS total_usados,
+  CASE
+    WHEN NVL(u.usados,0)=0 THEN NULL
+    ELSE ROUND(d.disponibles / u.usados, 2)
+  END                    AS indice_uso
+FROM ServicioSalud ss
+LEFT JOIN cnt_disp d
+  ON ss.idServicio = d.idServicio
+LEFT JOIN cnt_usados u
+  ON ss.idServicio = u.idServicio
+ORDER BY ss.idServicio;
+
+
+//RFC4
+DEFINE afiliado_id   = &afiliado_id
+DEFINE fecha_inicio = &fecha_inicio
+DEFINE fecha_fin    = &fecha_fin
+
+SELECT
+  ss.nombre               AS servicio,
+  c.fecha                 AS fecha_tomada,
+  m.nombre                AS medico,
+  ip.nombre               AS ips_ofrece
+FROM Cita c
+JOIN OrdenServicio os
+  ON c.OrdenServicio_idOrden = os.idOrden
+JOIN ServicioSalud ss
+  ON os.servicioSalud_idServicio = ss.idServicio
+JOIN Prestacion p
+  ON ss.idServicio = p.ServicioSalud_idServicio
+JOIN IPS ip
+  ON p.IPS_nit = ip.nit
+JOIN Medico m
+  ON c.Medico_registroMedico1 = m.registroMedico
+WHERE c.Afiliado_idAfiliado = &afiliado_id
+  AND c.estadoCita          = 'Completa'
+  AND c.fecha BETWEEN TO_DATE('&fecha_inicio','YYYY-MM-DD')
+                 AND TO_DATE('&fecha_fin'   ,'YYYY-MM-DD')
+ORDER BY c.fecha;
+
+
+UNDEFINE servicio_id
+UNDEFINE fecha_inicio
+UNDEFINE fecha_fin
+UNDEFINE afiliado_id
+
+
+COMMIT;
+
+
