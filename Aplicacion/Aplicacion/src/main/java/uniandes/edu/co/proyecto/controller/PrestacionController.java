@@ -6,16 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import uniandes.edu.co.proyecto.modelo.Ips;
 import uniandes.edu.co.proyecto.modelo.Prestacion;
 import uniandes.edu.co.proyecto.modelo.PrestacionPK;
-import uniandes.edu.co.proyecto.modelo.ServicioSalud;
 import uniandes.edu.co.proyecto.repositorio.PrestacionRepository;
-import uniandes.edu.co.proyecto.repositorio.ServicioSaludRepository;
-import uniandes.edu.co.proyecto.repositorio.IpsRepository;
-
-import java.util.Optional;
-
 
 import java.util.Collection;
 
@@ -24,10 +17,7 @@ public class PrestacionController {
 
     @Autowired
     private PrestacionRepository prestacionRepo;
-    @Autowired
-    private IpsRepository ipsRepo;
-    @Autowired
-    private ServicioSaludRepository servicioSaludRepo;
+
 
 
     @GetMapping("/prestacion")
