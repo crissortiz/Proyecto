@@ -1,0 +1,452 @@
+{
+	"info": {
+		"_postman_id": "e547cc3b-1361-420d-945f-820d905132d3",
+		"name": "EPS Andes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41968297"
+	},
+	"item": [
+		{
+			"name": "Afiliado",
+			"item": [
+				{
+					"name": "Create Afiliado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idAfiliado\": 31,\r\n  \"tipoDocumento\": \"CC\",\r\n  \"numDocumento\": 12345678,\r\n  \"nombre\": \"Juan Pérez\",\r\n  \"fechaNacimiento\": \"1990-05-10\",\r\n  \"direccion\": \"Calle 123 #45-67\",\r\n  \"telefono\": 3001234567,  \r\n  \"tipoAfiliado\": \"Beneficiario\",\r\n  \"parentesco\": null,\r\n  \"idAfiliadoDependiente\": null\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/afiliados/new/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"afiliados",
+								"new",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Afliliados",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/afiliados",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"afiliados"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cita",
+			"item": [
+				{
+					"name": "Create Cita",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idCita\": 11,\r\n  \"fecha\": \"2025-05-14T10:30:00\",\r\n  \"estadoCita\": \"Ocupada\",\r\n  \"idOrden\": 11,\r\n  \"idAfiliado\": 33,\r\n  \"registroMedico\": 1020\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/citas/new/save",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"citas",
+								"new",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Uptade Cita",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idCita\": 11,\r\n  \"fecha\": \"2025-05-14T10:30:00\",\r\n  \"estadoCita\": \"Completa\",\r\n  \"idOrden\": 11,\r\n  \"idAfiliado\": 33,\r\n  \"registroMedico\": 1020\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/citas/11/edit/save",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"citas",
+								"11",
+								"edit",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RF 7",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/citas/2/disponibles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"citas",
+								"2",
+								"disponibles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Medico",
+			"item": [
+				{
+					"name": "Create Medico",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"registroMedico\": 1020,  \r\n  \"nombre\": \"Carlos Pérez\",\r\n  \"tipoDocumento\": \"CC\",\r\n  \"numDocumento\": 123456789,\r\n  \"especialidad\": \"Pediatría\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/medicos/new/save",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos",
+								"new",
+								"save"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ips",
+			"item": [
+				{
+					"name": "Create Ips",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nit\": \"900123461-6\",\r\n  \"nombre\": \"Clínica Santa Fe\",\r\n  \"direccion\": \"Carrera 7 #123-45, Bogotá\",\r\n  \"telefono\": \"6015556789\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ipss/new/save",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ipss",
+								"new",
+								"save"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ServicioSalud",
+			"item": [
+				{
+					"name": "Create ServicioSalud",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idServicio\": 11,\r\n  \"nombre\": \"Consulta de ejemplo\",\r\n  \"descripcion\": \"Atención médica básica para valoración inicial del paciente.\",\r\n  \"tipoServicio\": \"ConsultaGeneral\",\r\n  \"requiereOrden\": \"False\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/serviciosSalud/new/save",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"serviciosSalud",
+								"new",
+								"save"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Prestacion",
+			"item": [
+				{
+					"name": "Create Prestacion",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"pk\": {\r\n    \"nit\": {\r\n      \"nit\": \"900123461-6\"\r\n    },\r\n    \"idServicio\": {\r\n      \"idServicio\": 11\r\n    }\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/prestacion/new/save",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prestacion",
+								"new",
+								"save"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OrdenServicio",
+			"item": [
+				{
+					"name": "Create OrdenServicio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idOrden\": 11,\r\n  \"fecha\": \"2025-05-14\",\r\n  \"estadoOrden\": \"Vigente\",\r\n  \"tipoOrden\": \"Servicio\",\r\n  \"descripcion\": \"servicio de ejemplo\",\r\n  \"registroMedico\": 1020,\r\n  \"idAfiliado\": 33\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ordenesServicio/new/save",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ordenesServicio",
+								"new",
+								"save"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

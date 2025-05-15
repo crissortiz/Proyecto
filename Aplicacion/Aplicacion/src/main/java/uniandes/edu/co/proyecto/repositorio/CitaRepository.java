@@ -36,9 +36,7 @@ public interface CitaRepository extends JpaRepository<Cita, Integer> {
     @Transactional
     @Query(value = "DELETE FROM Cita WHERE idCita = :idCita", nativeQuery = true)
     void deleteCita(@Param("idCita") Integer idCita);
-    
-    /**RF7 */
-    /**1. Buscar slots libres de un servicio en las próximas 4 semanas */
+
     @Query(value = """
     SELECT
         ss.nombre AS servicio,
