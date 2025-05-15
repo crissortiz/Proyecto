@@ -587,4 +587,6 @@ ORDER BY c.fecha;
 ALTER TABLE cita DROP COLUMN idorden;
 
 
-select *from cita
+//Eliminacion de relaciones sin sentido
+DROP TABLE especifica
+DROP Table atiende

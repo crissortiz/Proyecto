@@ -72,21 +72,6 @@
 <dataTypeSize>20 CHAR</dataTypeSize>
 <ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="registroMedico" id="DDAA05AC-7DD4-54AC-A29A-3638507EC5BE">
-<createdBy>ortiz</createdBy>
-<createdTime>2025-05-06 19:23:53 UTC</createdTime>
-<generatorID>923D7330-E804-D097-1C96-9F8F9B39B90D</generatorID>
-<ownerDesignName>Modelo ER</ownerDesignName>
-<engineerTo>
-<item key="B7ADF03B-6EE0-F8B6-ED9B-5F544F2AA87B" value="true"/>
-</engineerTo>
-<referedAttribute>488B351B-1751-D8C4-32D3-C61A69BA4FCE</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<dataTypeSize>100</dataTypeSize>
-<ownDataTypeParameters>100,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="idOrden" id="56F61B4B-49EF-0282-730D-569122363712">
 <createdBy>ortiz</createdBy>
 <createdTime>2025-05-11 01:29:48 UTC</createdTime>
