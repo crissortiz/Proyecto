@@ -14,23 +14,28 @@ public class Cita {
     private Date fecha;
     private String estadoCita;
 
-    // Referencias no embebidas (solo campos clave)
     private String ordenServicioDescripcion;
     private int afiliadoNumDocumento;
     private int medicoRegistro;
 
+    private int servicioId;       // 🆕 Para RFC1
+    private String ipsNombre;     // 🆕 Para RFC1
+
     public Cita() {}
 
     public Cita(Date fecha, String estadoCita, String ordenServicioDescripcion,
-                int afiliadoNumDocumento, int medicoRegistro) {
+                int afiliadoNumDocumento, int medicoRegistro,
+                int servicioId, String ipsNombre) {
         this.fecha = fecha;
         this.estadoCita = estadoCita;
         this.ordenServicioDescripcion = ordenServicioDescripcion;
         this.afiliadoNumDocumento = afiliadoNumDocumento;
         this.medicoRegistro = medicoRegistro;
+        this.servicioId = servicioId;
+        this.ipsNombre = ipsNombre;
     }
 
-    // Getters y Setters
+    // Getters y setters
 
     public String getId() {
         return id;
@@ -79,4 +84,21 @@ public class Cita {
     public void setMedicoRegistro(int medicoRegistro) {
         this.medicoRegistro = medicoRegistro;
     }
+
+    public int getServicioId() {
+        return servicioId;
+    }
+
+    public void setServicioId(int servicioId) {
+        this.servicioId = servicioId;
+    }
+
+    public String getIpsNombre() {
+        return ipsNombre;
+    }
+
+    public void setIpsNombre(String ipsNombre) {
+        this.ipsNombre = ipsNombre;
+    }
 }
+

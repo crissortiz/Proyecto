@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import uniandes.edu.co.proyecto.modelo.Ips;
+import uniandes.edu.co.proyecto.modelo.Ips.ServicioPrestado;
 import uniandes.edu.co.proyecto.repositorio.IpsRepository;
 
 import java.util.List;
@@ -72,4 +73,15 @@ public class IpsController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    //Asignar un servicio a una IPS
+    @PostMapping("/servicios/asignar")
+    public ResponseEntity<String> asignarServicioAIPS(@RequestParam String nit, @RequestBody ServicioPrestado servicio) {
+    try {
+        ipsRepository.agregarServicioAIPS(nit, servicio);
+        return ResponseEntity.ok("Servicio asignado correctamente a la IPS.");
+    } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + e.getMessage());
+    }
+}
 }
