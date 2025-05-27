@@ -1,95 +1,73 @@
 package uniandes.edu.co.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.ui.Model;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
+import uniandes.edu.co.proyecto.modelo.Cita;
+import uniandes.edu.co.proyecto.repositorio.CitaRepository;
 
 import java.util.Date;
 import java.util.List;
 
-import uniandes.edu.co.proyecto.dto.CitaDisponibleDTO;
-import uniandes.edu.co.proyecto.modelo.Cita;
-import uniandes.edu.co.proyecto.repositorio.CitaRepository;
-
 @RestController
+@RequestMapping("/citas")
 public class CitaController {
 
     @Autowired
     private CitaRepository citaRepository;
 
-
-    @GetMapping("/citas")
-    public String citas(Model model) {
-        model.addAttribute("citas", citaRepository.findAllCitas());
-        return model.toString();
-    }
-
-    @GetMapping("/citas/new")
-    public String citaNueva(Model model) {
-        model.addAttribute("cita", new Cita());
-        return "cita new";
-    }
-
-    @PostMapping("/citas/new/save")
-    public ResponseEntity<String> guardarCita(@RequestBody Cita cita) {
-        citaRepository.createCita(
-            cita.getIdCita(),
-            cita.getFecha() != null ? cita.getFecha() : new Date() ,
-            cita.getEstadoCita(),
-            cita.getIdOrden(),
-            cita.getRegistroMedico(),
-            cita.getIdAfiliado()
-        );
-        return ResponseEntity.ok("redirect:/citas");
-    }
-
-    @GetMapping("/citas/{id}/edit")
-    public String editarCita(@PathVariable("id") Integer id, Model model) {
-        Cita cita = citaRepository.findCitaById(id);
-        if (cita != null) {
-            model.addAttribute("cita", cita);
-            return "cita edit";
-        } else {
-            return "redirect:/citas";
+    // Crear nueva cita
+    @PostMapping("/new/save")
+    public ResponseEntity<String> crearCita(@RequestBody Cita cita) {
+        try {
+            citaRepository.save(cita);
+            return new ResponseEntity<>("Cita creada exitosamente", HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error al crear la cita: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @PostMapping("/citas/{id}/edit/save")
-    public ResponseEntity<String> guardarCitaEditada(@PathVariable("id") Integer id, @RequestBody Cita cita) {
-        citaRepository.updateCita(
-            id,
-            cita.getFecha(),
-            cita.getEstadoCita(),
-            Integer.valueOf(cita.getIdOrden()),
-            Integer.valueOf(cita.getRegistroMedico()),
-            Integer.valueOf(cita.getIdAfiliado())
-        );
-        return ResponseEntity.ok("redirect:/citas");
+    // Obtener todas las citas
+    @GetMapping("")
+    public ResponseEntity<List<Cita>> obtenerTodasLasCitas() {
+        try {
+            List<Cita> lista = citaRepository.findAll();
+            return ResponseEntity.ok(lista);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
-    @GetMapping("/citas/{id}/delete")
-    public String eliminarCita(@PathVariable("id") Integer id) {
-        citaRepository.deleteCita(id);
-        return "redirect:/citas";
+    // Obtener citas por estado
+    @GetMapping("/estado/{estado}")
+    public ResponseEntity<List<Cita>> buscarPorEstado(@PathVariable("estado") String estado) {
+        try {
+            List<Cita> resultado = citaRepository.buscarPorEstado(estado);
+            return ResponseEntity.ok(resultado);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
-    @GetMapping("/citas/{idServicio}/disponibles")
-   public ResponseEntity<List<CitaDisponibleDTO>> getDisponibilidad(@RequestParam Integer servicioId) {
-        List<CitaDisponibleDTO> disponibilidad = citaRepository.findDisponibilidadPorServicio(servicioId);
-        return new ResponseEntity<>(disponibilidad, HttpStatus.OK);
+    // Obtener citas por número de documento del afiliado
+    @GetMapping("/afiliado/{numDocumento}")
+    public ResponseEntity<List<Cita>> buscarPorAfiliado(@PathVariable("numDocumento") int doc) {
+        try {
+            List<Cita> resultado = citaRepository.buscarCitasFuturasPorAfiliado(doc, new Date());
+            return ResponseEntity.ok(resultado);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
-
-    @GetMapping("/citas/test/{valor}")
-public ResponseEntity<String> testPathVariable(@PathVariable String valor) {
-    return new ResponseEntity<>("El valor es: " + valor, HttpStatus.OK);
-}
-
+    // Obtener citas disponibles por médico
+    @GetMapping("/medico/{registro}/disponibles")
+    public ResponseEntity<List<Cita>> buscarDisponiblesPorMedico(@PathVariable("registro") int reg) {
+        try {
+            List<Cita> resultado = citaRepository.buscarDisponiblesPorMedico(reg);
+            return ResponseEntity.ok(resultado);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 }

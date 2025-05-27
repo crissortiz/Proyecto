@@ -1,82 +1,97 @@
 package uniandes.edu.co.proyecto.modelo;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.Id;
 import java.util.Date;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import java.util.List;
 
-@Entity
-@Table(name = "Afiliado")
+@Document(collection = "afiliados")
 public class Afiliado {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "IDAFILIADO")
-    private Integer idAfiliado;
+    private String id;
 
-    private String nombre;
-
-    @Temporal(TemporalType.DATE)
-    private Date fechaNacimiento;
-    private String tipoAfiliado;
     private String tipoDocumento;
     private Integer numDocumento;
+    private String nombre;
+    private Date fechaNacimiento;
     private String direccion;
     private String telefono;
-    private String parentesco;
-    private Integer afiliadoDependienteId;
+    private String tipoAfiliado;
 
-    public Afiliado(Integer idAfiliado, String nombre, Date fechaNacimiento, String tipoAfiliado,
-                    String tipoDocumento, Integer numDocumento, String direccion, String telefono,
-                    String parentesco, Integer afiliadoDependienteId) {
-        this.idAfiliado = idAfiliado;
-        this.nombre = nombre;
-        this.fechaNacimiento = fechaNacimiento;
-        this.tipoAfiliado = tipoAfiliado;
+    private List<Beneficiario> beneficiarios;
+
+    // Clase embebida
+    public static class Beneficiario {
+        private String tipoDocumento;
+        private int numDocumento;
+        private String nombre;
+        private Date fechaNacimiento;
+        private String parentesco;
+
+        public Beneficiario() {}
+
+        public String getTipoDocumento() {
+            return tipoDocumento;
+        }
+
+        public void setTipoDocumento(String tipoDocumento) {
+            this.tipoDocumento = tipoDocumento;
+        }
+
+        public int getNumDocumento() {
+            return numDocumento;
+        }
+
+        public void setNumDocumento(int numDocumento) {
+            this.numDocumento = numDocumento;
+        }
+
+        public String getNombre() {
+            return nombre;
+        }
+
+        public void setNombre(String nombre) {
+            this.nombre = nombre;
+        }
+
+        public Date getFechaNacimiento() {
+            return fechaNacimiento;
+        }
+
+        public void setFechaNacimiento(Date fechaNacimiento) {
+            this.fechaNacimiento = fechaNacimiento;
+        }
+
+        public String getParentesco() {
+            return parentesco;
+        }
+
+        public void setParentesco(String parentesco) {
+            this.parentesco = parentesco;
+        }
+    }
+
+    public Afiliado() {}
+
+    public Afiliado(String tipoDocumento, Integer numDocumento, String nombre, Date fechaNacimiento,
+                    String direccion, String telefono, String tipoAfiliado, List<Beneficiario> beneficiarios) {
         this.tipoDocumento = tipoDocumento;
         this.numDocumento = numDocumento;
+        this.nombre = nombre;
+        this.fechaNacimiento = fechaNacimiento;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.parentesco = parentesco;
-        this.afiliadoDependienteId = afiliadoDependienteId;
-    }
-    public Afiliado() 
-    {;}
-
-    public Integer getIdAfiliado() {
-        return idAfiliado;
-    }
-    public void setIdAfiliado(Integer idAfiliado) {
-        this.idAfiliado = idAfiliado;
-    }
-    
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public String getTipoAfiliado() {
-        return tipoAfiliado;
-    }
-
-    public void setTipoAfiliado(String tipoAfiliado) {
         this.tipoAfiliado = tipoAfiliado;
+        this.beneficiarios = beneficiarios;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTipoDocumento() {
@@ -95,6 +110,22 @@ public class Afiliado {
         this.numDocumento = numDocumento;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
     public String getDireccion() {
         return direccion;
     }
@@ -111,26 +142,24 @@ public class Afiliado {
         this.telefono = telefono;
     }
 
-    public String getParentesco() {
-        return parentesco;
+    public String getTipoAfiliado() {
+        return tipoAfiliado;
     }
 
-    public void setParentesco(String parentesco) {
-        this.parentesco = parentesco;
+    public void setTipoAfiliado(String tipoAfiliado) {
+        this.tipoAfiliado = tipoAfiliado;
     }
 
-    public Integer getAfiliadoDependienteId() {
-        return afiliadoDependienteId;
+    public List<Beneficiario> getBeneficiarios() {
+        return beneficiarios;
     }
 
-    public void setAfiliadoDependienteId(Integer afiliadoDependienteId) {
-        this.afiliadoDependienteId = afiliadoDependienteId;
+    public void setBeneficiarios(List<Beneficiario> beneficiarios) {
+        this.beneficiarios = beneficiarios;
     }
 
     @Override
     public String toString() {
-        return String.format("%-15s | %-15s | %-20s | %-15s | %-30s | %-15s | %-15s | %-15s",
-                idAfiliado, tipoDocumento, numDocumento, nombre, fechaNacimiento, direccion, telefono, tipoAfiliado, parentesco, afiliadoDependienteId);}
-
-
+        return String.format("Afiliado [%s - %s %s]", tipoDocumento, numDocumento, nombre);
+    }
 }

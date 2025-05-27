@@ -1,51 +1,45 @@
 package uniandes.edu.co.proyecto.modelo;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import java.util.Date;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "Cita")
+import java.util.Date;
+
+@Document(collection = "citas")
 public class Cita {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idCita;    
-    
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fecha;           
-    private String estadoCita;    
-    @Column(name = "OrdenServicio_idOrden")
-    private Integer idOrden;       
-    private Integer idAfiliado;    
-    private Integer registroMedico; 
+    private String id;
 
-    public Cita(Integer idCita, Date fecha, String estadoCita, Integer idOrden, Integer idAfiliado, Integer registroMedico) {
-        
-        this.idCita = idCita;
+    private Date fecha;
+    private String estadoCita;
+
+    // Referencias no embebidas (solo campos clave)
+    private String ordenServicioDescripcion;
+    private int afiliadoNumDocumento;
+    private int medicoRegistro;
+
+    public Cita() {}
+
+    public Cita(Date fecha, String estadoCita, String ordenServicioDescripcion,
+                int afiliadoNumDocumento, int medicoRegistro) {
         this.fecha = fecha;
         this.estadoCita = estadoCita;
-        this.idOrden = idOrden;
-        this.idAfiliado = idAfiliado;
-        this.registroMedico = registroMedico;
+        this.ordenServicioDescripcion = ordenServicioDescripcion;
+        this.afiliadoNumDocumento = afiliadoNumDocumento;
+        this.medicoRegistro = medicoRegistro;
     }
 
-    public Cita() 
-    {;}
+    // Getters y Setters
 
-    public Integer getIdCita() {
-        return idCita;
+    public String getId() {
+        return id;
     }
-    public void setIdCita(Integer idCita) {
-        this.idCita = idCita;
+
+    public void setId(String id) {
+        this.id = id;
     }
-    
+
     public Date getFecha() {
         return fecha;
     }
@@ -62,27 +56,27 @@ public class Cita {
         this.estadoCita = estadoCita;
     }
 
-    public Integer getIdOrden() {
-        return idOrden;
+    public String getOrdenServicioDescripcion() {
+        return ordenServicioDescripcion;
     }
 
-    public void setIdOrden(Integer idOrden) {
-        this.idOrden = idOrden;
+    public void setOrdenServicioDescripcion(String ordenServicioDescripcion) {
+        this.ordenServicioDescripcion = ordenServicioDescripcion;
     }
 
-    public Integer getIdAfiliado() {
-        return idAfiliado;
+    public int getAfiliadoNumDocumento() {
+        return afiliadoNumDocumento;
     }
 
-    public void setIdAfiliado(Integer idAfiliado) {
-        this.idAfiliado = idAfiliado;
+    public void setAfiliadoNumDocumento(int afiliadoNumDocumento) {
+        this.afiliadoNumDocumento = afiliadoNumDocumento;
     }
 
-    public Integer getRegistroMedico() {
-        return registroMedico;
+    public int getMedicoRegistro() {
+        return medicoRegistro;
     }
 
-    public void setRegistroMedico(Integer registroMedico) {
-        this.registroMedico = registroMedico;
+    public void setMedicoRegistro(int medicoRegistro) {
+        this.medicoRegistro = medicoRegistro;
     }
 }

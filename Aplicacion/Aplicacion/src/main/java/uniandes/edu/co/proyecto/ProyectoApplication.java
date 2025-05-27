@@ -22,7 +22,7 @@ public class ProyectoApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) {
 
-		Collection<Ips> ips = ipsRepository.findAllIps();
+		Collection<Ips> ips = ipsRepository.findAll();
 		for(Ips i: ips)
 		{
 			System.out.println(i);

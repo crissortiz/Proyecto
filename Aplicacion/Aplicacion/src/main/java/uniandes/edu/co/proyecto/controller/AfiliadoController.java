@@ -1,84 +1,82 @@
 package uniandes.edu.co.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
-
 import uniandes.edu.co.proyecto.modelo.Afiliado;
 import uniandes.edu.co.proyecto.repositorio.AfiliadoRepository;
 
-import java.util.Date;
+import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/afiliados")
 public class AfiliadoController {
 
     @Autowired
     private AfiliadoRepository afiliadoRepository;
 
-    @GetMapping("/afiliados")
-    public String afiliados(Model model){
-        model.addAttribute("afiliados", afiliadoRepository.findAllAfiliados());
-        return "afiliados"; // Debes tener un archivo afiliados.html en templates
-    }
-
-    @GetMapping("/afiliados/new")
-    public String afiliadoNew(Model model){
-        model.addAttribute("afiliado", new Afiliado());
-        return "afiliado_new"; // afiliado_new.html
-    }
-
-    @PostMapping("/afiliados/new/save")
-    public ResponseEntity<String> afiliadoGuardar(@RequestBody Afiliado afiliado) {
-        System.out.println(afiliado.toString());
-        afiliadoRepository.createAfiliado(
-            afiliado.getIdAfiliado(),
-            afiliado.getTipoDocumento() != null ? afiliado.getTipoDocumento().toString() : null,
-            afiliado.getNumDocumento(),
-            afiliado.getNombre(),
-            afiliado.getFechaNacimiento() != null ? afiliado.getFechaNacimiento() : new Date(),
-            afiliado.getDireccion(),
-            afiliado.getTelefono(),
-            afiliado.getTipoAfiliado() != null ? afiliado.getTipoAfiliado().toString() : null,         
-            afiliado.getParentesco(),
-            afiliado.getAfiliadoDependienteId()
-        );
-        return ResponseEntity.ok("redirect:/afiliados");
-    }
-
-    @GetMapping("/afiliados/{id}/edit")
-    public String afiliadoEditarForm(@PathVariable("id") Integer idAfiliado, Model model) {
-        Afiliado afiliado = afiliadoRepository.findAfiliadoById(idAfiliado);
-        if (afiliado != null) {
-            model.addAttribute("afiliado", afiliado);
-            return "afiliado_edit"; // afiliado_edit.html
-        } else {
-            return "redirect:/afiliados";
+    // Crear un nuevo afiliado
+    @PostMapping("/new/save")
+    public ResponseEntity<String> crearAfiliado(@RequestBody Afiliado afiliado) {
+        try {
+            afiliadoRepository.save(afiliado);
+            return new ResponseEntity<>("Afiliado creado exitosamente", HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error al crear el afiliado: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @PostMapping("/afiliados/{id}/edit/save")
-    public String afiliadoEditarGuardar(@PathVariable("id") Integer idAfiliado, @ModelAttribute Afiliado afiliado) {
-        afiliadoRepository.updateAfiliado(
-            idAfiliado,
-            afiliado.getTipoDocumento(),
-            afiliado.getNumDocumento(),
-            afiliado.getNombre(),
-            afiliado.getFechaNacimiento(),
-            afiliado.getDireccion(),
-            afiliado.getTelefono(),
-            afiliado.getTipoAfiliado(),
-            afiliado.getParentesco(),
-            afiliado.getAfiliadoDependienteId()
-        );
-        return "redirect:/afiliados";
+    // Obtener todos los afiliados
+    @GetMapping("")
+    public ResponseEntity<List<Afiliado>> obtenerTodosLosAfiliados() {
+        try {
+            List<Afiliado> afiliados = afiliadoRepository.findAll();
+            return ResponseEntity.ok(afiliados);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
-    @GetMapping("/afiliados/{id}/delete")
-    public String afiliadoEliminar(@PathVariable("id") Integer idAfiliado) {
-        afiliadoRepository.deleteAfiliado(idAfiliado);
-        return "redirect:/afiliados";
+    // Obtener afiliado por número de documento
+    @GetMapping("/{numDocumento}")
+    public ResponseEntity<List<Afiliado>> obtenerPorDocumento(@PathVariable("numDocumento") int doc) {
+        try {
+            List<Afiliado> afiliados = afiliadoRepository.buscarPorNumDocumento(doc);
+            if (afiliados.isEmpty()) {
+                return ResponseEntity.notFound().build();
+            }
+            return ResponseEntity.ok(afiliados);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    // Eliminar afiliado por número de documento
+    @DeleteMapping("/{numDocumento}/delete")
+    public ResponseEntity<String> eliminarAfiliado(@PathVariable("numDocumento") int doc) {
+        try {
+            afiliadoRepository.eliminarPorNumDocumento(doc);
+            return ResponseEntity.ok("Afiliado eliminado exitosamente");
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error al eliminar afiliado: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // Actualizar datos de un afiliado
+    @PostMapping("/{numDocumento}/edit/save")
+    public ResponseEntity<String> actualizarAfiliado(
+            @PathVariable("numDocumento") int doc,
+            @RequestBody Afiliado afiliado) {
+        try {
+            afiliadoRepository.actualizarAfiliado(
+                doc,
+                afiliado.getNombre(),
+                afiliado.getDireccion(),
+                afiliado.getTelefono()
+            );
+            return ResponseEntity.ok("Afiliado actualizado exitosamente");
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error al actualizar afiliado: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
-

@@ -1,36 +1,22 @@
 package uniandes.edu.co.proyecto.repositorio;
 
-import uniandes.edu.co.proyecto.modelo.*;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import org.springframework.transaction.annotation.Transactional;
-import java.util.Collection;
-import java.util.Date;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+import uniandes.edu.co.proyecto.modelo.OrdenServicio;
 
-public interface OrdenServicioRepository extends JpaRepository<OrdenServicio, Integer> {
-    @Query(value = "SELECT * FROM OrdenServicio", nativeQuery = true)
-    Collection<OrdenServicio> findAllOrdenesServicio();
+import java.util.List;
 
-    @Query(value = "SELECT * FROM OrdenServicio WHERE idOrden = :idOrden", nativeQuery = true)
-    OrdenServicio findOrdenServicioById(@Param("idOrden") Integer idOrden);
+public interface OrdenServicioRepository extends MongoRepository<OrdenServicio, String> {
 
-    @Query(value = "SELECT * FROM OrdenServicio WHERE Afiliado_idAfiliado = :idAfiliado", nativeQuery = true)
-    Collection<OrdenServicio> findOrdenesServicioByAfiliado(@Param("idAfiliado") Integer idAfiliado);
+    // Buscar órdenes por número de documento del afiliado
+    @Query("{ 'afiliadoNumDocumento' : ?0 }")
+    List<OrdenServicio> buscarPorAfiliado(int numDocumento);
 
-    @Modifying
-    @Transactional
-    @Query(value = "INSERT INTO OrdenServicio (idOrden, fecha, estadoOrden, tipoOrden, descripcion, Medico_registroMedico1, Afiliado_idAfiliado) VALUES (:idOrden, :fecha, :estadoOrden, :tipoOrden, :descripcion, :Medico_registroMedico1, :Afiliado_idAfiliado)", nativeQuery = true)
-    void createOrdenServicio(@Param("idOrden") Integer idOrden, @Param("fecha") Date fecha, @Param("estadoOrden") String estadoOrden, @Param("tipoOrden") String tipoOrden, @Param("descripcion") String descripcion, @Param("Medico_registroMedico1") Integer medicoRegistroMedico1, @Param("Afiliado_idAfiliado") Integer afiliadoIdAfiliado);
+    // Buscar órdenes por estado
+    @Query("{ 'estado' : ?0 }")
+    List<OrdenServicio> buscarPorEstado(String estado);
 
-    @Modifying
-    @Transactional
-    @Query(value = "UPDATE OrdenServicio SET fecha = :fecha, estadoOrden = :estadoOrden, tipoOrden = :tipoOrden, descripcion = :descripcion, Afiliado_idAfiliado = :Afiliado_idAfiliado, Medico_registroMedico = :Medico_registroMedico WHERE idOrden = :idOrden", nativeQuery = true)
-    void updateOrdenServicio(@Param("idOrden") Integer idOrden, @Param("fecha") Date fecha, @Param("estadoOrden") String estadoOrden, @Param("tipoOrden") String tipoOrden, @Param("descripcion") String descripcion, @Param("Afiliado_idAfiliado") Integer afiliadoIdAfiliado, @Param("Medico_registroMedico") Integer medicoRegistroMedico);
-
-    @Modifying
-    @Transactional
-    @Query(value = "DELETE FROM OrdenServicio WHERE idOrden = :idOrden", nativeQuery = true)
-    void deleteOrdenServicio(@Param("idOrden") Integer idOrden);
+    // Buscar órdenes por tipo de servicio (Servicio, Terapia)
+    @Query("{ 'tipo' : ?0 }")
+    List<OrdenServicio> buscarPorTipo(String tipo);
 }

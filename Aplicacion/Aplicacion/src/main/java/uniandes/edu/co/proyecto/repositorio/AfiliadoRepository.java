@@ -1,34 +1,29 @@
 package uniandes.edu.co.proyecto.repositorio;
 
-import uniandes.edu.co.proyecto.modelo.*;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import org.springframework.transaction.annotation.Transactional;
-import java.util.Collection;
-import java.util.Date;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+import org.springframework.data.mongodb.repository.Update;
+import uniandes.edu.co.proyecto.modelo.Afiliado;
 
-public interface AfiliadoRepository extends JpaRepository<Afiliado, Integer> {
+import java.util.List;
 
-    @Query(value = "SELECT * FROM Afiliado", nativeQuery = true)
-    Collection<Afiliado> findAllAfiliados();
+public interface AfiliadoRepository extends MongoRepository<Afiliado, String> {
 
-    @Query(value = "SELECT * FROM Afiliado WHERE idAfiliado = :idAfiliado", nativeQuery = true)
-    Afiliado findAfiliadoById(@Param("idAfiliado") Integer idAfiliado);
+    // Buscar por número de documento
+    @Query("{ 'numDocumento' : ?0 }")
+    List<Afiliado> buscarPorNumDocumento(int numDocumento);
 
-    @Modifying
-    @Transactional
-    @Query(value = "INSERT INTO Afiliado (idAfiliado, tipoDocumento, numDocumento, nombre, fechaNacimiento, direccion, telefono, tipoAfiliado, parentesco, afiliadoDependienteId) VALUES (:idAfiliado, :tipoDocumento, :numDocumento, :nombre, :fechaNacimiento, :direccion, :telefono, :tipoAfiliado, :parentesco, :afiliadoDependienteId)", nativeQuery = true)
-    void createAfiliado(@Param("idAfiliado") Integer idAfiliado,  @Param("tipoDocumento") String tipoDocumento, @Param("numDocumento") Integer numDocumento,  @Param("nombre") String nombre, @Param("fechaNacimiento") Date fechaNacimiento, @Param("direccion") String direccion, @Param("telefono") String telefono, @Param("tipoAfiliado") String tipoAfiliado, @Param("parentesco") String parentesco, @Param("afiliadoDependienteId") Integer afiliadoDependienteId);
+    // Insertar un afiliado usando default (opcional)
+    default void insertarAfiliado(Afiliado afiliado) {
+        save(afiliado);
+    }
 
-    @Modifying
-    @Transactional
-    @Query(value = "UPDATE Afiliado SET tipoDocumento = :tipoDocumento, numDocumento = :numDocumento, nombre = :nombre, fechaNacimiento = :fechaNacimiento, direccion = :direccion, telefono = :telefono, tipoAfiliado = :tipoAfiliado, parentesco = :parentesco, afiliadoDependienteId = :afiliadoDependienteId WHERE idAfiliado = :idAfiliado", nativeQuery = true)
-    void updateAfiliado(@Param("idAfiliado") Integer idAfiliado, @Param("tipoDocumento") String tipoDocumento, @Param("numDocumento") Integer numDocumento, @Param("nombre") String nombre, @Param("fechaNacimiento") Date fechaNacimiento, @Param("direccion") String direccion, @Param("telefono") String telefono, @Param("tipoAfiliado") String tipoAfiliado, @Param("parentesco") String parentesco, @Param("afiliadoDependienteId") Integer afiliadoDependienteId);
+    // Actualizar datos de afiliado por número de documento
+    @Query(value = "{ 'numDocumento' : ?0 }")
+    @Update("{ '$set' : { 'nombre' : ?1, 'direccion' : ?2, 'telefono' : ?3 } }")
+    void actualizarAfiliado(int numDocumento, String nombre, String direccion, String telefono);
 
-    @Modifying
-    @Transactional
-    @Query(value = "DELETE FROM Afiliado WHERE idAfiliado = :idAfiliado", nativeQuery = true)
-    void deleteAfiliado(@Param("idAfiliado") Integer idAfiliado);
+    // Eliminar por número de documento
+    @Query(value = "{ 'numDocumento' : ?0 }", delete = true)
+    void eliminarPorNumDocumento(int numDocumento);
 }

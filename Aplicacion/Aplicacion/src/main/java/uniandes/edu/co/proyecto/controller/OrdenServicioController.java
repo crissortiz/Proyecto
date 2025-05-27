@@ -1,77 +1,72 @@
 package uniandes.edu.co.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
-
 import uniandes.edu.co.proyecto.modelo.OrdenServicio;
 import uniandes.edu.co.proyecto.repositorio.OrdenServicioRepository;
 
-import java.util.Date;
+import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/ordenes")
 public class OrdenServicioController {
 
     @Autowired
     private OrdenServicioRepository ordenServicioRepository;
 
-    @GetMapping("/ordenesServicio")
-    public String ordenesServicio(Model model) {
-        model.addAttribute("ordenesServicio", ordenServicioRepository.findAllOrdenesServicio());
-        return "ordenesServicio"; // Nombre de la vista
-    }
-
-    @GetMapping("/ordenesServicio/new")
-    public String nuevaOrdenServicio(Model model) {
-        model.addAttribute("ordenServicio", new OrdenServicio());
-        return "ordenServicioNew"; // Vista para crear orden
-    }
-
-    @PostMapping("/ordenesServicio/new/save")
-    public ResponseEntity<String> guardarNuevaOrdenServicio(@RequestBody OrdenServicio ordenServicio) {
-        ordenServicioRepository.createOrdenServicio(
-            ordenServicio.getIdOrden(),
-            ordenServicio.getFecha() != null ? ordenServicio.getFecha() : new Date(),
-            ordenServicio.getEstadoOrden(),
-            ordenServicio.getTipoOrden(),
-            ordenServicio.getDescripcion(),
-            ordenServicio.getRegistroMedico(),
-            ordenServicio.getIdAfiliado()
-        );
-        return ResponseEntity.ok("redirect:/ordenesServicio");
-    }
-
-    @GetMapping("/ordenesServicio/{id}/edit")
-    public String editarOrdenServicio(@PathVariable("id") Integer id, Model model) {
-        OrdenServicio orden = ordenServicioRepository.findOrdenServicioById(id);
-        if (orden != null) {
-            model.addAttribute("ordenServicio", orden);
-            return "ordenServicioEdit"; // Vista para editar
-        } else {
-            return "redirect:/ordenesServicio";
+    // Crear una nueva orden
+    @PostMapping("/new/save")
+    public ResponseEntity<String> crearOrden(@RequestBody OrdenServicio orden) {
+        try {
+            ordenServicioRepository.save(orden);
+            return new ResponseEntity<>("Orden creada exitosamente", HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error al crear la orden: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @PostMapping("/ordenesServicio/{id}/edit/save")
-    public String guardarEdicionOrdenServicio(
-        @PathVariable("id") Integer idOrden,
-        @RequestParam("fecha") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha,
-        @RequestParam("estadoOrden") String estadoOrden,
-        @RequestParam("tipoOrden") String tipoOrden,
-        @RequestParam("descripcion") String descripcion,
-        @RequestParam("idAfiliado") Integer idAfiliado,
-        @RequestParam("registroMedico") Integer registroMedico) {
-
-        ordenServicioRepository.updateOrdenServicio(idOrden, fecha, estadoOrden, tipoOrden, descripcion, idAfiliado, registroMedico);
-        return "redirect:/ordenesServicio";
+    // Obtener todas las órdenes
+    @GetMapping("")
+    public ResponseEntity<List<OrdenServicio>> obtenerTodas() {
+        try {
+            List<OrdenServicio> lista = ordenServicioRepository.findAll();
+            return ResponseEntity.ok(lista);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
-    @GetMapping("/ordenesServicio/{id}/delete")
-    public String eliminarOrdenServicio(@PathVariable("id") Integer idOrden) {
-        ordenServicioRepository.deleteOrdenServicio(idOrden);
-        return "redirect:/ordenesServicio";
+    // Buscar por número de documento del afiliado
+    @GetMapping("/afiliado/{numDocumento}")
+    public ResponseEntity<List<OrdenServicio>> buscarPorAfiliado(@PathVariable("numDocumento") int doc) {
+        try {
+            List<OrdenServicio> lista = ordenServicioRepository.buscarPorAfiliado(doc);
+            return ResponseEntity.ok(lista);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    // Buscar por estado (Vigente, Completada, Vencida)
+    @GetMapping("/estado/{estado}")
+    public ResponseEntity<List<OrdenServicio>> buscarPorEstado(@PathVariable("estado") String estado) {
+        try {
+            List<OrdenServicio> lista = ordenServicioRepository.buscarPorEstado(estado);
+            return ResponseEntity.ok(lista);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    // Buscar por tipo (Servicio o Terapia)
+    @GetMapping("/tipo/{tipo}")
+    public ResponseEntity<List<OrdenServicio>> buscarPorTipo(@PathVariable("tipo") String tipo) {
+        try {
+            List<OrdenServicio> lista = ordenServicioRepository.buscarPorTipo(tipo);
+            return ResponseEntity.ok(lista);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 }

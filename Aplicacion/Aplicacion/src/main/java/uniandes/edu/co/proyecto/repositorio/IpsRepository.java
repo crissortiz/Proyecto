@@ -1,36 +1,21 @@
 package uniandes.edu.co.proyecto.repositorio;
 
-import java.util.Collection;
-
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import uniandes.edu.co.proyecto.modelo.Ips;
+import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+public interface IpsRepository extends MongoRepository<Ips, String> {
 
-import org.springframework.transaction.annotation.Transactional;
+    // Buscar IPS por nombre exacto
+    @Query("{ 'nombre' : ?0 }")
+    List<Ips> buscarPorNombre(String nombre);
 
-public interface IpsRepository extends JpaRepository<Ips, String> {
-    
-    @Query(value = "SELECT * FROM Ips", nativeQuery = true)
-    Collection<Ips> findAllIps();
+    // Buscar IPS que ofrezcan un servicio específico
+    @Query("{ 'serviciosPrestados.idServicio' : ?0 }")
+    List<Ips> buscarIpsPorIdServicio(int idServicio);
 
-    @Query(value = "SELECT * FROM Ips WHERE nit = :nit", nativeQuery = true)
-    Ips findIpsByNit(@Param("nit") String nit);
-
-    @Modifying
-    @Transactional
-    @Query(value = "INSERT INTO Ips (nit, nombre, direccion, telefono) VALUES (:nit, :nombre, :direccion, :telefono)", nativeQuery = true)
-    void CreateIps(@Param("nit") String nit, @Param("nombre") String nombre, @Param("direccion") String direccion, @Param("telefono") String telefono);
-    
-    @Modifying
-    @Transactional
-    @Query(value = "UPDATE Ips SET nit = :nit, nombre = :nombre, direccion = :direccion, telefono = :telefono)", nativeQuery = true)
-    void UpdateIPS(@Param("nit") String nit, @Param("nombre") String nombre, @Param("direccion") String direccion, @Param("telefono") String telefono);
-
-    @Modifying
-    @Transactional
-    @Query(value = "DELETE FROM Ips WHERE nit = :nit", nativeQuery = true)
-    void DeleteIps(@Param("nit") String nit);
+    // Buscar IPS por nombre de servicio ofrecido
+    @Query("{ 'serviciosPrestados.nombre' : { $regex: ?0, $options: 'i' } }")
+    List<Ips> buscarIpsPorNombreServicio(String nombreParcial);
 }
